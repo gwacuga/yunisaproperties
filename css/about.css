@@ -1,0 +1,708 @@
+/* ==========================================================
+                    ABOUT PAGE
+========================================================== */
+
+.about-hero{
+
+height:70vh;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+text-align:center;
+
+background:
+
+linear-gradient(
+
+rgba(0,0,0,.45),
+
+rgba(0,0,0,.25),
+
+rgba(0,0,0,.45)
+
+),
+
+url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2400&q=80");
+
+background-size:cover;
+
+background-position:center;
+
+position:relative;
+
+}
+
+.about-overlay{
+
+position:absolute;
+
+inset:0;
+
+}
+
+.about-content{
+
+position:relative;
+
+z-index:2;
+
+color:white;
+
+width:min(900px,90%);
+
+}
+
+.about-content span{
+
+letter-spacing:3px;
+
+color:var(--accent);
+
+font-weight:700;
+
+}
+
+.about-content h1{
+
+margin:20px 0;
+
+font-size:clamp(2.8rem,6vw,5rem);
+
+color:white;
+
+}
+
+.about-content p{
+
+font-size:20px;
+
+line-height:1.8;
+
+}
+
+.about-story{
+
+width:min(1200px,90%);
+
+margin:80px auto;
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:60px;
+
+align-items:center;
+
+}
+
+.about-image img{
+
+width:100%;
+
+border-radius:20px;
+
+box-shadow:var(--shadow);
+
+}
+
+.about-text h2{
+
+margin-bottom:20px;
+
+}
+
+.about-text p{
+
+line-height:2;
+
+margin-bottom:20px;
+
+}
+
+/* ==========================================================
+                SERVICES
+========================================================== */
+
+.about-services{
+
+    width:min(1200px,90%);
+
+    margin:100px auto;
+
+}
+
+.services-grid{
+
+    display:grid;
+
+    grid-template-columns:
+
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:30px;
+
+}
+
+.service-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:40px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+    transition:.3s;
+
+}
+
+.service-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.service-card i{
+
+    font-size:45px;
+
+    color:var(--primary);
+
+    margin-bottom:20px;
+
+}
+
+.service-card h3{
+
+    margin-bottom:15px;
+
+}
+/* ==========================================================
+                    RESPONSIVE
+========================================================== */
+
+@media (max-width: 992px){
+
+    .about-story,
+    .why-choose-us{
+
+        grid-template-columns:1fr;
+
+        gap:40px;
+
+    }
+
+    .about-text{
+
+        text-align:center;
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    .about-hero{
+
+        min-height:60vh;
+
+        padding:80px 20px;
+
+    }
+
+    .about-content h1{
+
+        font-size:2.3rem;
+
+    }
+
+    .about-content p{
+
+        font-size:1rem;
+
+    }
+
+    .services-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .mission-section{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .about-stats{
+
+        grid-template-columns:repeat(2,1fr);
+
+        padding:40px 20px;
+
+        gap:30px;
+
+    }
+
+    .about-cta{
+
+        padding:50px 20px;
+
+    }
+
+    .about-cta div{
+
+        flex-direction:column;
+
+        align-items:center;
+
+    }
+
+    .about-cta a{
+
+        width:100%;
+
+        max-width:320px;
+
+        text-align:center;
+
+    }
+
+}
+
+@media (max-width:480px){
+
+    .about-stats{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .about-content h1{
+
+        font-size:2rem;
+
+    }
+
+    .section-heading h2{
+
+        font-size:1.8rem;
+
+    }
+
+}
+
+/* ==========================================================
+                WHY CHOOSE US
+========================================================== */
+
+.why-choose-us{
+
+    width:min(1200px,92%);
+
+    margin:100px auto;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:60px;
+
+    align-items:center;
+
+}
+
+.why-image{
+
+    width:100%;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    aspect-ratio:16 / 10;
+
+}
+
+.why-image img{
+
+    width:100%;
+
+    height:100%;
+
+    display:block;
+
+    object-fit:cover;
+
+    transition:.4s;
+
+}
+
+.why-image img:hover{
+
+    transform:scale(1.05);
+
+}
+
+.why-text span{
+
+    display:inline-block;
+
+    color:var(--primary);
+
+    font-weight:700;
+
+    letter-spacing:3px;
+
+    margin-bottom:15px;
+
+}
+
+.why-text h2{
+
+    margin-bottom:20px;
+
+}
+
+.why-text p{
+
+    line-height:1.9;
+
+    margin-bottom:30px;
+
+}
+
+.why-list{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+}
+
+.why-list div{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-weight:500;
+
+}
+
+.why-list i{
+
+    color:var(--primary);
+
+    font-size:20px;
+
+}
+
+/* ==========================================================
+                WHY CHOOSE US RESPONSIVE
+========================================================== */
+
+@media(max-width:992px){
+
+    .why-choose-us{
+
+        grid-template-columns:1fr;
+
+        gap:40px;
+
+    }
+
+    .why-image{
+
+        order:-1;
+
+        max-width:700px;
+
+        margin:auto;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .why-image{
+
+        aspect-ratio:4 / 3;
+
+        width:100%;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .why-image{
+
+        aspect-ratio:1 / 1;
+
+    }
+
+}
+
+/* ==========================================================
+                MISSION SECTION
+========================================================== */
+
+
+.mission-section{
+
+    width:min(1200px,92%);
+
+    margin:100px auto;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:30px;
+
+}
+
+
+
+.mission-card{
+
+    background:white;
+
+    padding:45px 35px;
+
+    text-align:center;
+
+    border-radius:20px;
+
+    box-shadow:var(--shadow);
+
+    transition:.3s;
+
+}
+
+
+
+.mission-card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+
+
+.mission-card i{
+
+    font-size:45px;
+
+    color:var(--primary);
+
+    margin-bottom:25px;
+
+}
+
+
+
+.mission-card h3{
+
+    font-family:var(--heading-font);
+
+    font-size:1.5rem;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.mission-card p{
+
+    line-height:1.8;
+
+}
+
+@media(max-width:992px){
+
+    .mission-section{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+}
+
+
+
+@media(max-width:768px){
+
+    .mission-section{
+
+        width:94%;
+
+        margin:70px auto;
+
+    }
+
+
+    .mission-card{
+
+        padding:35px 25px;
+
+    }
+
+
+}
+
+/* ==========================================================
+                STATISTICS SECTION
+========================================================== */
+
+
+.about-stats{
+
+
+    width:min(1200px,92%);
+
+
+    margin:100px auto;
+
+
+    display:grid;
+
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+
+    gap:30px;
+
+
+}
+
+
+
+/* ==========================================================
+                STATISTICS CARDS
+========================================================== */
+
+.stat-card{
+
+    background:white;
+
+    color:var(--secondary);
+
+    padding:45px 25px;
+
+    text-align:center;
+
+    border-radius:20px;
+
+    box-shadow:var(--shadow);
+
+    border:1px solid var(--border);
+
+    transition:.3s;
+
+}
+
+
+
+.stat-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:
+
+    0 15px 35px rgba(0,0,0,.12);
+
+}
+
+
+
+.stat-card i{
+
+    font-size:40px;
+
+    color:var(--primary);
+
+    margin-bottom:20px;
+
+}
+
+
+
+.stat-card h2{
+
+    font-size:2.8rem;
+
+    margin:10px 0;
+
+    color:var(--primary);
+
+    font-family:var(--heading-font);
+
+}
+
+
+
+.stat-card p{
+
+    color:var(--text);
+
+}
+
+@media(max-width:992px){
+
+
+    .about-stats{
+
+
+        grid-template-columns:
+        repeat(2,1fr);
+
+
+    }
+
+
+}
+
+
+
+@media(max-width:480px){
+
+
+    .about-stats{
+
+
+        grid-template-columns:1fr;
+
+
+    }
+
+
+    .stat-card h2{
+
+
+        font-size:2.3rem;
+
+
+    }
+
+
+}

@@ -1,0 +1,333 @@
+/* ==========================================================
+                    MODAL OVERLAY
+========================================================== */
+
+
+.modal-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:2rem;
+
+    z-index:9999;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.25s ease;
+
+}
+
+/* ==========================================================
+                    ACTIVE
+========================================================== */
+
+.modal-overlay.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+/* ==========================================================
+                    MODAL
+========================================================== */
+
+.modal{
+
+    width:100%;
+
+    max-width:900px;
+
+    max-height:90vh;
+
+    background:#fff;
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    display:flex;
+
+    flex-direction:column;
+
+    transform:translateY(20px);
+
+    transition:.25s ease;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.25);
+
+}
+
+.modal-overlay.active .modal{
+
+    transform:translateY(0);
+
+}
+
+/* ==========================================================
+                    HEADER
+========================================================== */
+
+.modal-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:1.5rem 2rem;
+
+    border-bottom:1px solid #eee;
+
+}
+
+.modal-header h2{
+
+    margin:0;
+
+    font-size:1.4rem;
+
+    font-weight:700;
+
+}
+
+.modal-close{
+
+    border:none;
+
+    background:none;
+
+    font-size:1.8rem;
+
+    cursor:pointer;
+
+    color:#777;
+
+}
+
+.modal-close:hover{
+
+    color:#111;
+
+}
+
+/* ==========================================================
+                    BODY
+========================================================== */
+
+.modal-body{
+
+    padding:2rem;
+
+    overflow-y:auto;
+
+    flex:1;
+
+}
+
+/* ==========================================================
+                    FOOTER
+========================================================== */
+
+.modal-footer{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:1rem;
+
+    padding:1.5rem 2rem;
+
+    border-top:1px solid #eee;
+
+}
+
+/* ==========================================================
+                    RESPONSIVE
+========================================================== */
+
+@media(max-width:768px){
+
+    .modal-overlay{
+
+        padding:1rem;
+
+        align-items:flex-start;
+
+        overflow-y:auto;
+
+    }
+
+    .modal{
+
+        margin-top:2rem;
+
+        max-height:none;
+
+    }
+
+    .modal-header,
+
+    .modal-body,
+
+    .modal-footer{
+
+        padding:1.25rem;
+
+    }
+
+}
+
+/* ==========================================================
+                    ENQUIRY FORM
+========================================================== */
+
+.enquiry-form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:1.25rem;
+
+}
+
+.enquiry-form .form-row{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:1rem;
+
+}
+
+.enquiry-form label{
+
+    display:block;
+
+    margin-bottom:.45rem;
+
+    font-size:.9rem;
+
+    font-weight:600;
+
+    color:#444;
+
+}
+
+.enquiry-form input,
+.enquiry-form textarea{
+
+    width:100%;
+
+    padding:.95rem 1rem;
+
+    border:1px solid #dcdcdc;
+
+    border-radius:10px;
+
+    background:#fafafa;
+
+    font-size:.95rem;
+
+    transition:.25s;
+
+    outline:none;
+
+}
+
+.enquiry-form textarea{
+
+    min-height:140px;
+
+    resize:vertical;
+
+}
+
+.enquiry-form input:focus,
+.enquiry-form textarea:focus{
+
+    border-color:var(--primary-color);
+
+    background:#fff;
+
+    box-shadow:0 0 0 4px rgba(0,120,255,.08);
+
+}
+
+.enquiry-form button{
+
+    border:none;
+
+    padding:1rem;
+
+    border-radius:12px;
+
+    background:var(--primary-color);
+
+    color:#fff;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.enquiry-form button:hover{
+
+    transform:translateY(-2px);
+
+    filter:brightness(.95);
+
+}
+
+.enquiry-note{
+
+    padding:1rem;
+
+    background:#f8f9fb;
+
+    border-left:4px solid var(--primary-color);
+
+    border-radius:8px;
+
+    color:#555;
+
+    font-size:.9rem;
+
+}
+
+/* ==========================================================
+                    MOBILE
+========================================================== */
+
+@media(max-width:768px){
+
+    .enquiry-form .form-row{
+
+        grid-template-columns:1fr;
+
+    }
+
+}

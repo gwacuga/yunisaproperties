@@ -1,0 +1,403 @@
+/* ==========================================================
+                PROPERTY CARDS
+========================================================== */
+
+
+/* ==========================================================
+                PROPERTY GRID
+========================================================== */
+
+.properties-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+    gap:25px;
+
+    padding:20px 0;
+
+    align-items:start;
+
+}
+
+
+
+/* ==========================================================
+                PROPERTY CARD
+========================================================== */
+
+
+.property-card{
+
+    background:var(--white);
+
+    border-radius:var(--radius);
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow);
+
+    transition:.3s;
+
+    max-width:400px;
+
+}
+
+
+
+.property-card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+
+
+/* ==========================================================
+                PROPERTY IMAGE
+========================================================== */
+
+
+.property-image{
+
+    width:100%;
+
+    height:240px;
+
+    overflow:hidden;
+
+    background:#e5e7eb;
+
+}
+
+
+
+.property-image img{
+
+    width:100%;
+
+    height:240px;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:.4s;
+
+}
+
+
+
+.property-card:hover 
+.property-image img{
+
+    transform:scale(1.05);
+
+}
+
+
+
+/* ==========================================================
+                PROPERTY CONTENT
+========================================================== */
+
+
+.property-content{
+
+    padding:20px;
+
+}
+
+
+
+.property-content h3{
+
+    margin:0 0 10px;
+
+    font-size:20px;
+
+    color:var(--secondary);
+
+}
+
+
+
+/* ==========================================================
+                PROPERTY TYPE BADGE
+========================================================== */
+
+
+.property-type{
+
+    display:inline-block;
+
+    background:#dbeafe;
+
+    color:#1d4ed8;
+
+    padding:5px 12px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+}
+
+
+
+/* ==========================================================
+                PROPERTY PRICE
+========================================================== */
+
+
+.property-price{
+
+    color:var(--primary);
+
+    margin:15px 0;
+
+    font-size:22px;
+
+}
+
+
+
+/* ==========================================================
+                PROPERTY FEATURES
+========================================================== */
+
+
+.property-features{
+
+    display:flex;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    margin:15px 0;
+
+    color:var(--text);
+
+}
+
+
+
+/* ==========================================================
+                VIEW DETAILS BUTTON
+========================================================== */
+
+
+.property-card a{
+
+    display:block;
+
+    text-align:center;
+
+    padding:12px;
+
+    background:var(--primary);
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:10px;
+
+    margin-top:15px;
+
+}
+
+
+
+/* ==========================================================
+                TABLET
+========================================================== */
+
+
+@media(max-width:1024px){
+
+
+    .properties-grid{
+
+        grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    }
+
+
+}
+
+
+
+/* ==========================================================
+                MOBILE PHONE
+========================================================== */
+
+
+@media(max-width:600px){
+
+
+    .properties-grid{
+
+        grid-template-columns:1fr;
+
+        gap:20px;
+
+    }
+
+
+
+    .property-card{
+
+        max-width:100%;
+
+    }
+
+
+
+    .property-image{
+
+        height:200px;
+
+    }
+
+
+
+    .property-image img{
+
+        height:200px;
+
+    }
+
+
+
+    .property-content{
+
+        padding:15px;
+
+    }
+
+
+
+    .property-content h3{
+
+        font-size:18px;
+
+    }
+
+
+
+    .property-price{
+
+        font-size:20px;
+
+    }
+
+
+}
+
+/* ==========================================================
+                PROPERTY STATUS
+========================================================== */
+
+.property-image{
+
+    position:relative;
+
+}
+
+.property-status{
+
+    position:absolute;
+
+    top:15px;
+
+    left:15px;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    padding:7px 14px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    z-index:5;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+    white-space:nowrap;
+
+}
+
+
+/* ==========================================================
+                TABLET
+========================================================== */
+
+@media (max-width:900px){
+
+    .property-status{
+
+        top:12px;
+
+        left:12px;
+
+        padding:6px 12px;
+
+        font-size:12px;
+
+    }
+
+}
+
+
+/* ==========================================================
+                MOBILE
+========================================================== */
+
+@media (max-width:600px){
+
+    .property-status{
+
+        top:10px;
+
+        left:10px;
+
+        padding:5px 10px;
+
+        font-size:11px;
+
+        border-radius:20px;
+
+    }
+
+}
+
+
+/* ==========================================================
+                SMALL PHONES
+========================================================== */
+
+@media (max-width:400px){
+
+    .property-status{
+
+        top:8px;
+
+        left:8px;
+
+        padding:4px 8px;
+
+        font-size:10px;
+
+    }
+
+}

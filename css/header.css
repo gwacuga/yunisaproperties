@@ -1,0 +1,126 @@
+/* ==========================================================
+                    HEADER
+========================================================== */
+
+
+.site-header{
+
+
+    width:100%;
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    align-items:center;
+
+
+    padding:
+
+    20px 60px;
+
+
+    background:white;
+
+
+    box-shadow:
+
+    0 4px 20px rgba(0,0,0,.08);
+
+
+    position:sticky;
+
+
+    top:0;
+
+
+    z-index:1000;
+
+
+}
+
+
+
+.logo h2{
+
+
+    margin:0;
+
+
+    color:
+
+    var(--primary);
+
+
+    font-size:26px;
+
+
+}
+
+
+
+.main-nav{
+
+
+    display:flex;
+
+
+    gap:30px;
+
+
+}
+
+
+
+.main-nav a{
+
+
+    text-decoration:none;
+
+
+    color:
+
+    var(--secondary);
+
+
+    font-weight:600;
+
+
+}
+
+
+
+.main-nav a:hover{
+
+
+    color:
+
+    var(--primary);
+
+
+}
+
+
+
+.menu-toggle{
+
+
+    display:none;
+
+
+    border:none;
+
+
+    background:none;
+
+
+    font-size:28px;
+
+
+    cursor:pointer;
+
+
+}

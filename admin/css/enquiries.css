@@ -1,0 +1,640 @@
+/* ==========================================================
+                    ENQUIRIES PAGE
+========================================================== */
+
+.enquiries-page {
+
+    padding: 25px;
+
+}
+
+
+/* ==========================================================
+                    PAGE HEADER
+========================================================== */
+
+.enquiries-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+
+}
+
+.enquiries-header h2 {
+
+    margin: 0;
+
+    font-size: 28px;
+
+    color: var(--heading);
+
+}
+
+.enquiries-header p {
+
+    margin: 6px 0 0;
+
+    color: #64748b;
+
+}
+
+
+/* ==========================================================
+                    INBOX TOOLBAR
+========================================================== */
+
+.enquiries-toolbar {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+
+    padding: 15px;
+
+    background: #fff;
+
+    border-radius: 14px;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,.05);
+
+}
+
+
+/* ==========================================================
+                    FILTERS
+========================================================== */
+
+.enquiry-filters {
+
+    display: flex;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+
+}
+
+.enquiry-filter {
+
+    border: none;
+
+    background: #f1f5f9;
+
+    color: #475569;
+
+    padding: 9px 16px;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition: .2s ease;
+
+}
+
+.enquiry-filter:hover {
+
+    background: #e2e8f0;
+
+}
+
+.enquiry-filter.active {
+
+    background: var(--primary);
+
+    color: #fff;
+
+}
+
+
+/* ==========================================================
+                    SEARCH
+========================================================== */
+
+.enquiry-search {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 10px;
+
+    padding: 9px 13px;
+
+    background: #fff;
+
+}
+
+.enquiry-search i {
+
+    color: #94a3b8;
+
+}
+
+.enquiry-search input {
+
+    border: none;
+
+    outline: none;
+
+    font-size: 14px;
+
+    width: 220px;
+
+}
+
+
+/* ==========================================================
+                    INBOX
+========================================================== */
+
+.enquiries-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+
+    background: #fff;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    box-shadow: 0 5px 25px rgba(0,0,0,.06);
+
+}
+
+
+/* ==========================================================
+                    MESSAGE ROW
+========================================================== */
+
+.enquiry-item {
+
+    display: grid;
+
+    grid-template-columns:
+        35px
+        190px
+        1fr
+        130px
+        110px;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 17px 20px;
+
+    border-bottom: 1px solid #eef2f7;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+
+}
+
+.enquiry-item:hover {
+
+    background: #f8fafc;
+
+}
+
+
+/* ==========================================================
+                    UNREAD
+========================================================== */
+
+.enquiry-item.unread {
+
+    background: #f0f7ff;
+
+}
+
+.enquiry-item.unread
+.enquiry-name {
+
+    font-weight: 700;
+
+    color: #0f172a;
+
+}
+
+.enquiry-item.unread
+.enquiry-subject {
+
+    font-weight: 700;
+
+}
+
+
+/* ==========================================================
+                    READ
+========================================================== */
+
+.enquiry-item.read {
+
+    background: #fff;
+
+}
+
+
+/* ==========================================================
+                    UNREAD DOT
+========================================================== */
+
+.enquiry-unread-dot {
+
+    width: 9px;
+
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #2563eb;
+
+}
+
+
+/* ==========================================================
+                    CUSTOMER
+========================================================== */
+
+.enquiry-name {
+
+    font-size: 14px;
+
+    color: #334155;
+
+}
+
+.enquiry-phone {
+
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 12px;
+
+    color: #94a3b8;
+
+}
+
+
+/* ==========================================================
+                    MESSAGE
+========================================================== */
+
+.enquiry-message {
+
+    min-width: 0;
+
+}
+
+.enquiry-subject {
+
+    font-size: 14px;
+
+    color: #334155;
+
+    margin-bottom: 4px;
+
+}
+
+.enquiry-preview {
+
+    color: #64748b;
+
+    font-size: 13px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+}
+
+
+/* ==========================================================
+                    PROPERTY
+========================================================== */
+
+.enquiry-property {
+
+    color: #64748b;
+
+    font-size: 13px;
+
+}
+
+
+/* ==========================================================
+                    DATE
+========================================================== */
+
+.enquiry-date {
+
+    color: #94a3b8;
+
+    font-size: 12px;
+
+    text-align: right;
+
+}
+
+
+/* ==========================================================
+                    STATUS
+========================================================== */
+
+.enquiry-status {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+}
+
+.enquiry-status.new {
+
+    background: #dbeafe;
+
+    color: #1d4ed8;
+
+}
+
+.enquiry-status.read {
+
+    background: #dcfce7;
+
+    color: #15803d;
+
+}
+
+
+/* ==========================================================
+                    EMPTY STATE
+========================================================== */
+
+.enquiries-empty {
+
+    padding: 70px 20px;
+
+    text-align: center;
+
+    color: #64748b;
+
+}
+
+.enquiries-empty i {
+
+    font-size: 45px;
+
+    margin-bottom: 15px;
+
+    color: #cbd5e1;
+
+}
+
+.enquiries-empty h3 {
+
+    margin-bottom: 8px;
+
+    color: #334155;
+
+}
+
+
+/* ==========================================================
+                    MOBILE
+========================================================== */
+
+@media(max-width:900px){
+
+    .enquiry-item {
+
+        grid-template-columns:
+            20px
+            1fr
+            auto;
+
+    }
+
+    .enquiry-property {
+
+        display: none;
+
+    }
+
+    .enquiry-date {
+
+        display: none;
+
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    .enquiries-page {
+
+        padding: 15px;
+
+    }
+
+    .enquiries-header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 10px;
+
+    }
+
+    .enquiries-toolbar {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+    .enquiry-search input {
+
+        width: 100%;
+
+    }
+
+    .enquiry-search {
+
+        width: 100%;
+
+    }
+
+    .enquiry-filters {
+
+        width: 100%;
+
+        overflow-x: auto;
+
+        flex-wrap: nowrap;
+
+    }
+
+    .enquiry-filter {
+
+        white-space: nowrap;
+
+    }
+
+    .enquiry-item {
+
+        grid-template-columns:
+            15px
+            1fr;
+
+        padding: 15px;
+
+    }
+
+    .enquiry-status {
+
+        display: none;
+
+    }
+
+}
+
+/* ==========================================================
+                    ENQUIRY FILTER COLORS
+========================================================== */
+
+.enquiry-filter {
+
+    border: none;
+
+    padding: 10px 18px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+
+}
+
+
+/* ==========================================================
+                        INBOX
+========================================================== */
+
+.enquiry-filter.inbox {
+
+    background: #2563eb;
+
+    color: #fff;
+
+}
+
+
+/* ==========================================================
+                        UNREAD
+========================================================== */
+
+.enquiry-filter.unread {
+
+    background: #f59e0b;
+
+    color: #fff;
+
+}
+
+
+/* ==========================================================
+                        READ
+========================================================== */
+
+.enquiry-filter.read {
+
+    background: #16a34a;
+
+    color: #fff;
+
+}
+
+
+/* ==========================================================
+                        ALL
+========================================================== */
+
+.enquiry-filter.all {
+
+    background: #475569;
+
+    color: #fff;
+
+}
+
+
+/* ==========================================================
+                        HOVER
+========================================================== */
+
+.enquiry-filter:hover {
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 4px 10px rgba(0,0,0,.12);
+
+}
+
+
+/* ==========================================================
+                    ACTIVE BUTTON
+========================================================== */
+
+.enquiry-filter.active {
+
+    box-shadow:
+        0 0 0 3px rgba(37,99,235,.18);
+
+    transform: translateY(-1px);
+
+}

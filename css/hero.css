@@ -1,0 +1,206 @@
+/* ==========================================================
+                    HERO SECTION
+========================================================== */
+
+.hero{
+
+    position:relative;
+
+    min-height:90vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    overflow:hidden;
+
+    background:
+
+   linear-gradient(
+
+    rgba(0,0,0,.35),
+
+    rgba(0,0,0,.15),
+
+    rgba(0,0,0,.35)
+
+),
+    url("https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=2400&q=80");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+}
+
+.hero-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+
+        rgba(15,23,42,.72),
+
+        rgba(15,23,42,.72)
+
+    );
+
+}
+
+.hero-content{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:900px;
+
+    padding:40px;
+
+    color:white;
+
+}
+
+.hero-tag{
+
+    display:inline-block;
+
+    padding:10px 20px;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:40px;
+
+    font-size:15px;
+
+    margin-bottom:25px;
+
+}
+
+.hero h1{
+
+    color:white;
+
+    font-size:clamp(3rem,6vw,5rem);
+
+    margin-bottom:25px;
+
+}
+
+.hero p{
+
+    color:#f1f5f9;
+
+    font-size:20px;
+
+    max-width:760px;
+
+    margin:auto;
+
+    margin-bottom:40px;
+
+    line-height:1.9;
+
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.btn-outline{
+
+    padding:15px 35px;
+
+    border:2px solid white;
+
+    color:white;
+
+    border-radius:50px;
+
+    transition:.35s;
+
+    font-weight:600;
+
+}
+
+.btn-outline:hover{
+
+    background:white;
+
+    color:var(--primary);
+
+}
+
+.hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    right:0;
+
+    bottom:0;
+
+    height:120px;
+
+    background:
+
+    linear-gradient(
+
+        transparent,
+
+        var(--background)
+
+    );
+
+}
+
+@media(max-width:768px){
+
+.hero{
+
+    min-height:75vh;
+
+}
+
+.hero-content{
+
+    padding:25px;
+
+}
+
+.hero p{
+
+    font-size:17px;
+
+}
+
+.hero-buttons{
+
+    flex-direction:column;
+
+}
+
+}

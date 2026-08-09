@@ -1,0 +1,59 @@
+.topbar{
+
+    height:70px;
+
+    background:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 25px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+}
+
+.menu-btn{
+
+    background:none;
+
+    border:none;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+}
+
+.topbar-right{
+
+    display:flex;
+
+    gap:15px;
+
+}
+
+.icon-btn{
+
+    width:40px;
+
+    height:40px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#f1f5f9;
+
+    cursor:pointer;
+
+}

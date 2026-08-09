@@ -1,0 +1,49 @@
+/* ==========================================================
+                WHATSAPP BUTTON
+========================================================== */
+
+
+.whatsapp-btn{
+
+
+    display:inline-block;
+
+
+    margin-top:20px;
+
+
+    padding:15px 30px;
+
+
+    background:#25D366;
+
+
+    color:white;
+
+
+    text-decoration:none;
+
+
+    border-radius:30px;
+
+
+    font-weight:600;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.whatsapp-btn:hover{
+
+
+    transform:translateY(-3px);
+
+
+    opacity:.9;
+
+
+}

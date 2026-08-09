@@ -1,0 +1,423 @@
+/* ==========================================================
+                PROPERTY SEARCH
+========================================================== */
+
+
+.property-search-section{
+
+
+    margin-top:-60px;
+
+
+    position:relative;
+
+
+    z-index:10;
+
+
+    padding:0 20px;
+
+
+}
+
+
+
+
+/* ==========================================================
+                SEARCH BOX
+========================================================== */
+
+
+.property-search{
+
+
+    max-width:1200px;
+
+
+    margin:auto;
+
+
+    background:white;
+
+
+    padding:25px;
+
+
+    border-radius:20px;
+
+
+    box-shadow:
+
+    0 15px 40px rgba(0,0,0,.15);
+
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    repeat(5,1fr);
+
+
+
+    gap:15px;
+
+
+    align-items:center;
+
+
+}
+
+
+
+
+/* ==========================================================
+                INPUTS
+========================================================== */
+
+
+.property-search input,
+.property-search select{
+
+
+    width:100%;
+
+
+    padding:15px 18px;
+
+
+    border:
+
+    1px solid var(--border);
+
+
+    border-radius:10px;
+
+
+    font-size:15px;
+
+
+    outline:none;
+
+
+    background:white;
+
+
+}
+
+
+
+.property-search input:focus,
+.property-search select:focus{
+
+
+    border-color:
+
+    var(--primary);
+
+
+}
+
+
+
+
+/* ==========================================================
+                SEARCH BUTTON
+========================================================== */
+
+
+.property-search button{
+
+
+    padding:
+
+    15px 25px;
+
+
+
+    border:none;
+
+
+    border-radius:10px;
+
+
+    background:
+
+    var(--primary);
+
+
+    color:white;
+
+
+    font-weight:600;
+
+
+    cursor:pointer;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.property-search button:hover{
+
+
+    background:
+
+    var(--accent);
+
+
+}
+
+
+
+/* ==========================================================
+                MOBILE
+========================================================== */
+
+
+@media(max-width:900px){
+
+
+    .property-search{
+
+
+        grid-template-columns:
+
+        repeat(2,1fr);
+
+
+    }
+
+
+}
+
+
+
+
+@media(max-width:600px){
+
+
+    .property-search-section{
+
+
+        margin-top:-30px;
+
+
+        padding:0 15px;
+
+
+    }
+
+
+
+    .property-search{
+
+
+        grid-template-columns:1fr;
+
+
+        padding:20px;
+
+
+    }
+
+
+}
+
+/* ==========================================================
+            PROPERTY FILTER
+========================================================== */
+
+
+.property-filter{
+
+
+max-width:1100px;
+
+
+margin:-40px auto 40px;
+
+
+background:white;
+
+
+padding:25px;
+
+
+border-radius:20px;
+
+
+box-shadow:
+0 10px 30px rgba(0,0,0,.12);
+
+
+display:flex;
+
+
+gap:15px;
+
+
+flex-wrap:wrap;
+
+
+}
+
+
+
+.property-filter input,
+.property-filter select{
+
+
+padding:14px;
+
+
+border:1px solid #ddd;
+
+
+border-radius:10px;
+
+
+flex:1;
+
+
+min-width:160px;
+
+
+}
+
+
+
+
+.property-filter button{
+
+
+background:var(--primary);
+
+
+color:white;
+
+
+border:none;
+
+
+padding:14px 30px;
+
+
+border-radius:10px;
+
+
+cursor:pointer;
+
+
+}
+
+
+
+
+.property-filter button:hover{
+
+
+opacity:.9;
+
+
+}
+
+
+
+@media(max-width:600px){
+
+
+.property-filter{
+
+
+margin:20px;
+
+
+flex-direction:column;
+
+
+}
+
+
+
+.property-filter input,
+.property-filter select,
+.property-filter button{
+
+
+width:100%;
+
+
+}
+
+
+}
+
+/* ==========================================================
+                    SEARCH SECTION
+========================================================== */
+
+.property-search-section{
+
+    width:min(1200px,92%);
+
+    margin:auto;
+
+    margin-top:-70px;
+
+    position:relative;
+
+    z-index:20;
+
+}
+
+.search-heading{
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+}
+
+.search-heading span{
+
+    display:inline-block;
+
+    color:var(--primary);
+
+    font-size:14px;
+
+    font-weight:700;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    margin-bottom:12px;
+
+}
+
+.search-heading h2{
+
+    font-size:clamp(2rem,4vw,3rem);
+
+    margin-bottom:15px;
+
+}
+
+.search-heading p{
+
+    max-width:720px;
+
+    margin:auto;
+
+    color:var(--text);
+
+    line-height:1.8;
+
+}
