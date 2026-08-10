@@ -6,23 +6,19 @@ import {
     initAdmin
 } from "./init.js";
 
-
 import {
     renderDashboard
 } from "./pages/dashboard.js";
-
 
 import {
     renderPropertiesPage,
     initializePropertiesPage
 } from "./pages/properties.js";
 
-
 import {
     renderEnquiriesPage,
     initializeEnquiriesPage
 } from "./pages/enquiries.js";
-
 
 import {
     renderMessagesPage,
@@ -39,6 +35,24 @@ export async function navigate(
 ) {
 
     switch (page) {
+
+
+        /* ==================================================
+                            DASHBOARD
+        ================================================== */
+
+        case "dashboard":
+
+            await initAdmin({
+
+                title: "Dashboard",
+
+                content:
+                    renderDashboard
+
+            });
+
+            break;
 
 
         /* ==================================================
@@ -61,7 +75,6 @@ export async function navigate(
             break;
 
 
-
         /* ==================================================
                             ENQUIRIES
         ================================================== */
@@ -80,7 +93,6 @@ export async function navigate(
             await initializeEnquiriesPage();
 
             break;
-
 
 
         /* ==================================================
@@ -103,21 +115,15 @@ export async function navigate(
             break;
 
 
-
         /* ==================================================
-                            DASHBOARD
+                        UNKNOWN PAGE
         ================================================== */
 
         default:
 
-            await initAdmin({
-
-                title: "Dashboard",
-
-                content:
-                    renderDashboard
-
-            });
+            await navigate(
+                "dashboard"
+            );
 
             break;
 
