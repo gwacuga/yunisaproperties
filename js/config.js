@@ -39,7 +39,10 @@ const CONFIG = {
             "Kenya",
 
         LOGO:
-            "assets/images/logos/logo.png"
+            "assets/images/logos/logo.png",
+
+        FAVICON:
+            "assets/images/logos/logo.jpg"
 
     },
 

@@ -2,8 +2,7 @@
                     ADMIN LOGIN PAGE
 ========================================================== */
 
-import AuthService
-from "../services/auth.service.js";
+import AuthService from "../services/auth.service.js";
 
 
 /* ==========================================================
@@ -12,14 +11,12 @@ from "../services/auth.service.js";
 
 export function renderLoginPage() {
 
-    const app =
-        document.getElementById("app");
+    const app = document.getElementById("app");
 
     if (!app) {
-
         return;
-
     }
+
 
     app.innerHTML = `
 
@@ -29,9 +26,10 @@ export function renderLoginPage() {
 
                 <div class="login-header">
 
-                    <h1>
-                        Yunisa Properties
-                    </h1>
+                    <img
+                        src="../assets/images/logos/logo.jpg"
+                        alt="Yunisa Properties"
+                        class="login-logo">
 
                     <p>
                         Admin Portal
@@ -44,6 +42,7 @@ export function renderLoginPage() {
                     id="adminLoginForm"
                     class="admin-login-form">
 
+
                     <div class="form-group">
 
                         <label for="adminEmail">
@@ -54,6 +53,7 @@ export function renderLoginPage() {
                             type="email"
                             id="adminEmail"
                             placeholder="Enter admin email"
+                            autocomplete="email"
                             required>
 
                     </div>
@@ -69,6 +69,7 @@ export function renderLoginPage() {
                             type="password"
                             id="adminPassword"
                             placeholder="Enter password"
+                            autocomplete="current-password"
                             required>
 
                     </div>
@@ -98,12 +99,11 @@ export function renderLoginPage() {
         </section>
 
     `;
-
 }
 
 
 /* ==========================================================
-                INITIALIZE LOGIN
+                    INITIALIZE LOGIN
 ========================================================== */
 
 export function initializeLoginPage() {
@@ -113,10 +113,9 @@ export function initializeLoginPage() {
             "adminLoginForm"
         );
 
+
     if (!form) {
-
         return;
-
     }
 
 
@@ -165,8 +164,8 @@ async function handleLogin(event) {
 
         errorElement.textContent = "";
 
-
         button.disabled = true;
+
 
         button.innerHTML = `
             <i class="fa-solid fa-spinner fa-spin"></i>
@@ -180,12 +179,11 @@ async function handleLogin(event) {
         );
 
 
-       window.location.href = "./dashboard.html";
+        window.location.href =
+            "./dashboard.html";
 
 
-    }
-
-    catch(error) {
+    } catch (error) {
 
         console.error(
             "Login failed:",
@@ -198,6 +196,7 @@ async function handleLogin(event) {
 
 
         button.disabled = false;
+
 
         button.innerHTML = `
             <i class="fa-solid fa-right-to-bracket"></i>
