@@ -261,22 +261,22 @@ return `
 
 
 
-<section class="page-banner">
+<section
+    class="page-banner"
+    style="background-image: url('${CONFIG.COMPANY.PROPERTIES_HERO}');"
+>
 
+    <div class="page-banner-overlay">
 
-<h1>
+        <h1>
+            ${CONFIG.COMPANY.NAME}
+        </h1>
 
-${CONFIG.COMPANY.NAME}
+        <p>
+            ${CONFIG.COMPANY.TAGLINE}
+        </p>
 
-</h1>
-
-
-<p>
-
-${CONFIG.COMPANY.TAGLINE}
-
-</p>
-
+    </div>
 
 </section>
 

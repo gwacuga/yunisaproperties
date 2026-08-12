@@ -41,9 +41,13 @@ const CONFIG = {
             "/assets/images/logos/logo.jpg",
 
         FAVICON:
-            "/assets/images/logos/logo.jpg"
+            "/assets/images/logos/logo.jpg",
 
-    },
+        PROPERTIES_HERO:
+             "https://static-images.remax.com/assets/web/rmx-design-system/images/homepage/heroCarousel/luxury/luxury-1.jpg?fit=cover&format=auto&height=987&width=2160"
+},
+
+    
 
 
     /* ==============================================
