@@ -1,7 +1,10 @@
 /* ==========================================================
                     PUBLIC APPLICATION
 ========================================================== */
-
+import {
+    initializeFavicon
+}
+from "./components/favicon.js";
 
 import CONFIG
 from "./config.js";
@@ -113,6 +116,8 @@ async function initializeApp(){
     // Initialize mobile navigation
 
     initializeMobileMenu();
+
+    initializeFavicon();
 
 
     // Initialize property search

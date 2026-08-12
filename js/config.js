@@ -16,9 +16,8 @@ const CONFIG = {
         "1.0.0",
 
 
-
     /* ==============================================
-                    COMPANY BRANDING
+                COMPANY BRANDING
     ============================================== */
 
     COMPANY: {
@@ -30,59 +29,51 @@ const CONFIG = {
             "Find your dream property",
 
         PHONE:
-            "+254715846532",
+            "+254723861527",
 
         EMAIL:
-            "info@yunisa.com",
+            "euniceyunisa06@gmail.com",
 
         ADDRESS:
             "Kenya",
 
         LOGO:
-            "/assets/images/logos/logo.png",
+            "/assets/images/logos/logo.jpg",
 
         FAVICON:
-            "assets/images/logos/logo.jpg"
+            "/assets/images/logos/logo.jpg"
 
     },
 
 
-/* ==============================================
-                WEBSITE THEME
-============================================== */
+    /* ==============================================
+                    WEBSITE THEME
+    ============================================== */
 
-THEME:{
+    THEME: {
 
+        PRIMARY:
+            "#0f766e",
 
-    PRIMARY:
-        "#0f766e",
+        SECONDARY:
+            "#0f172a",
 
+        ACCENT:
+            "#f59e0b",
 
-    SECONDARY:
-        "#0f172a",
+        BACKGROUND:
+            "#f8fafc",
 
+        WHITE:
+            "#ffffff",
 
-    ACCENT:
-        "#f59e0b",
+        TEXT:
+            "#475569",
 
+        BORDER:
+            "#e2e8f0"
 
-    BACKGROUND:
-        "#f8fafc",
-
-
-    WHITE:
-        "#ffffff",
-
-
-    TEXT:
-        "#475569",
-
-
-    BORDER:
-        "#e2e8f0"
-
-
-},
+    },
 
 
     /* ==============================================
@@ -98,7 +89,6 @@ THEME:{
             ""
 
     },
-
 
 
     /* ==============================================
@@ -138,7 +128,6 @@ THEME:{
             "viewings"
 
     }
-
 
 };
 

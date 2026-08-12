@@ -12,7 +12,6 @@ import CONFIG from "../config.js";
 export function renderHeader() {
 
     return `
-
         <header class="site-header">
 
             <div class="logo">
@@ -22,19 +21,16 @@ export function renderHeader() {
                     <img
                         src="${CONFIG.COMPANY.LOGO}"
                         alt="${CONFIG.COMPANY.NAME}"
-                        class="site-logo">
+                        class="site-logo"
+                    >
 
                 </a>
 
                 <div class="logo-text">
 
-                    <h2>
-                        ${CONFIG.COMPANY.NAME}
-                    </h2>
+                    <h2>${CONFIG.COMPANY.NAME}</h2>
 
-                    <span>
-                        ${CONFIG.COMPANY.TAGLINE}
-                    </span>
+                    <span>${CONFIG.COMPANY.TAGLINE}</span>
 
                 </div>
 
@@ -42,18 +38,19 @@ export function renderHeader() {
 
 
             <button
+                type="button"
                 class="menu-toggle"
                 id="menuToggle"
-                aria-label="Open navigation">
-
+                aria-label="Open navigation"
+            >
                 ☰
-
             </button>
 
 
             <nav
                 class="main-nav"
-                id="mainNav">
+                id="mainNav"
+            >
 
                 <a href="index.html">
                     Home
@@ -74,7 +71,6 @@ export function renderHeader() {
             </nav>
 
         </header>
-
     `;
 
 }
@@ -93,11 +89,10 @@ export function initializeHeader() {
         document.getElementById("mainNav");
 
 
-    if (
-        !menuButton ||
-        !nav
-    ) {
+    if (!menuButton || !nav) {
+
         return;
+
     }
 
 

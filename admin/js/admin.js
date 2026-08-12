@@ -1,6 +1,10 @@
 /* ==========================================================
                     ADMIN APPLICATION
 ========================================================== */
+import {
+    initializeFavicon
+}
+from "../../js/components/favicon.js";
 
 import AuthService
 from "./services/auth.service.js";
@@ -37,6 +41,8 @@ AuthService.onAuthStateChanged(
             Authenticated user
             → open dashboard
         */
+        initializeFavicon();
+
 
         await navigate(
             "dashboard"

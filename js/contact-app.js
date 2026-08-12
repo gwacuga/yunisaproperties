@@ -1,70 +1,54 @@
+```javascript
 /* ==========================================================
-                CONTACT APPLICATION
+                    CONTACT APPLICATION
 ========================================================== */
 
-
 import {
-    renderHeader
-}
-from "./components/header.js";
-
+    renderHeader,
+    initializeHeader
+} from "./components/header.js";
 
 import {
     renderFooter
-}
-from "./components/footer.js";
-
+} from "./components/footer.js";
 
 import {
     renderFloatingContact
-}
-from "./components/floating-contact.js";
-
+} from "./components/floating-contact.js";
 
 import {
     renderContact
-}
-from "./pages/contact.js";
+} from "./pages/contact.js";
 
 
+/* ==========================================================
+                    INITIALIZE CONTACT
+========================================================== */
+
+function initializeContact() {
+
+    const app = document.getElementById("app");
+
+    if (!app) {
+        return;
+    }
+
+    app.innerHTML =
+        renderHeader() +
+        renderContact() +
+        renderFooter() +
+        renderFloatingContact();
 
 
-
-async function initializeContact(){
-
-
-const app =
-
-document.getElementById(
-    "app"
-);
-
-
-
-app.innerHTML =
-
-
-renderHeader()
-
-
-+
-
-renderContact()
-
-
-+
-
-renderFooter()
-
-
-+
-
-renderFloatingContact();
-
-
+    /* Initialize the header AFTER rendering it */
+    initializeHeader();
 
 }
 
 
+/* ==========================================================
+                    START APPLICATION
+========================================================== */
 
 initializeContact();
+```
