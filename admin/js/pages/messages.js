@@ -14,24 +14,39 @@ export function renderMessagesPage(){
 
     return `
 
-        <section class="admin-page">
+        <section class="admin-page messages-page">
 
-            <div class="page-header">
+
+            <!-- PAGE HEADER -->
+
+            <div class="page-header messages-page-header">
 
                 <div>
 
+                    <span class="messages-eyebrow">
+
+                        CUSTOMER COMMUNICATION
+
+                    </span>
+
                     <h2>
+
                         Messages
+
                     </h2>
 
                     <p>
-                        Messages received from the website contact form.
+
+                        Messages received from your website
+                        contact form.
+
                     </p>
 
                 </div>
 
+
                 <div
-                    class="messages-count"
+                    class="messages-total"
                     id="messagesCount">
 
                     Loading...
@@ -41,15 +56,103 @@ export function renderMessagesPage(){
             </div>
 
 
+
+            <!-- MESSAGE STATISTICS -->
+
+            <div class="message-stats">
+
+
+                <div class="message-stat-card">
+
+                    <div class="message-stat-icon">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Total Messages
+                        </span>
+
+                        <strong id="totalMessages">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="message-stat-card">
+
+                    <div class="message-stat-icon new">
+
+                        <i class="fa-solid fa-envelope-open"></i>
+
+                    </div>
+
+                    <div>
+
+                        <span>
+                            New Messages
+                        </span>
+
+                        <strong id="newMessages">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="message-stat-card">
+
+                    <div class="message-stat-icon today">
+
+                        <i class="fa-solid fa-calendar-day"></i>
+
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Today
+                        </span>
+
+                        <strong id="todayMessages">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- MESSAGES -->
+
             <div
                 id="messagesContainer"
                 class="messages-container">
 
-                <p>
-                    Loading messages...
-                </p>
+                <div class="messages-loading">
+
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+
+                    <span>
+                        Loading messages...
+                    </span>
+
+                </div>
 
             </div>
+
 
         </section>
 
@@ -59,19 +162,25 @@ export function renderMessagesPage(){
 
 
 /* ==========================================================
-                    INITIALIZE MESSAGES
+                    INITIALIZE PAGE
 ========================================================== */
 
 export async function initializeMessagesPage(){
 
+    await loadMessages();
+
+}
+
+
+/* ==========================================================
+                    LOAD MESSAGES
+========================================================== */
+
+async function loadMessages(){
+
     const container =
         document.getElementById(
             "messagesContainer"
-        );
-
-    const count =
-        document.getElementById(
-            "messagesCount"
         );
 
 
@@ -88,21 +197,28 @@ export async function initializeMessagesPage(){
             await MessagesService.getAll();
 
 
-        if(count){
+        messages.sort(
 
-            count.textContent =
-                `${messages.length} Message${messages.length === 1 ? "" : "s"}`;
+            (a,b) =>
 
-        }
+                (b.createdAt || 0) -
+                (a.createdAt || 0)
+
+        );
+
+
+        updateStatistics(
+            messages
+        );
 
 
         if(!messages.length){
 
             container.innerHTML = `
 
-                <div class="empty-state">
+                <div class="messages-empty">
 
-                    <div class="empty-icon">
+                    <div class="messages-empty-icon">
 
                         <i class="fa-regular fa-envelope"></i>
 
@@ -113,8 +229,10 @@ export async function initializeMessagesPage(){
                     </h3>
 
                     <p>
-                        Messages sent through the website contact form
-                        will appear here.
+
+                        Messages sent through the website
+                        contact form will appear here.
+
                     </p>
 
                 </div>
@@ -126,19 +244,19 @@ export async function initializeMessagesPage(){
         }
 
 
-        container.innerHTML = messages
+        container.innerHTML =
 
-            .sort(
-                (a,b) =>
-                    (b.createdAt || 0) -
-                    (a.createdAt || 0)
-            )
+            messages
 
-            .map(
-                renderMessage
-            )
+                .map(
+                    renderMessage
+                )
 
-            .join("");
+                .join("");
+
+
+        initializeMessageActions();
+
 
     }
 
@@ -149,19 +267,121 @@ export async function initializeMessagesPage(){
             error
         );
 
+
         container.innerHTML = `
 
-            <div class="error-state">
+            <div class="messages-error">
 
                 <i class="fa-solid fa-triangle-exclamation"></i>
 
+                <h3>
+                    Unable to load messages
+                </h3>
+
                 <p>
-                    Failed to load messages.
+                    Please try again.
                 </p>
 
             </div>
 
         `;
+
+    }
+
+}
+
+
+/* ==========================================================
+                    STATISTICS
+========================================================== */
+
+function updateStatistics(messages){
+
+    const total =
+        messages.length;
+
+
+    const newMessages =
+        messages.filter(
+            message =>
+                !message.status ||
+                message.status.toLowerCase() === "new"
+        ).length;
+
+
+    const today =
+        new Date();
+
+
+    const todayStart =
+        new Date(
+            today.getFullYear(),
+            today.getMonth(),
+            today.getDate()
+        ).getTime();
+
+
+    const todayMessages =
+        messages.filter(
+            message =>
+                message.createdAt &&
+                message.createdAt >= todayStart
+        ).length;
+
+
+    const totalElement =
+        document.getElementById(
+            "totalMessages"
+        );
+
+
+    const newElement =
+        document.getElementById(
+            "newMessages"
+        );
+
+
+    const todayElement =
+        document.getElementById(
+            "todayMessages"
+        );
+
+
+    const countElement =
+        document.getElementById(
+            "messagesCount"
+        );
+
+
+    if(totalElement){
+
+        totalElement.textContent =
+            total;
+
+    }
+
+
+    if(newElement){
+
+        newElement.textContent =
+            newMessages;
+
+    }
+
+
+    if(todayElement){
+
+        todayElement.textContent =
+            todayMessages;
+
+    }
+
+
+    if(countElement){
+
+        countElement.textContent =
+
+            `${total} Message${total === 1 ? "" : "s"}`;
 
     }
 
@@ -177,23 +397,31 @@ function renderMessage(message){
     const phone =
         message.phone || "";
 
+
     const whatsappNumber =
         phone
             .replace(/\s+/g, "")
             .replace(/^0/, "254");
 
 
+    const status =
+        message.status || "New";
+
+
     return `
 
         <article
-            class="message-card">
+            class="message-card"
+            data-message-id="${message.id}">
 
 
             <!-- HEADER -->
 
             <div class="message-card-header">
 
+
                 <div class="message-sender">
+
 
                     <div class="message-avatar">
 
@@ -201,7 +429,8 @@ function renderMessage(message){
 
                     </div>
 
-                    <div>
+
+                    <div class="message-sender-info">
 
                         <h3>
 
@@ -211,6 +440,7 @@ function renderMessage(message){
                             )}
 
                         </h3>
+
 
                         <span>
 
@@ -223,17 +453,19 @@ function renderMessage(message){
 
                     </div>
 
+
                 </div>
 
 
                 <div class="message-meta">
 
                     <span
-                        class="message-status ${getStatusClass(message.status)}">
+                        class="message-status ${getStatusClass(status)}">
 
-                        ${message.status || "New"}
+                        ${escapeHTML(status)}
 
                     </span>
+
 
                     <small>
 
@@ -245,12 +477,15 @@ function renderMessage(message){
 
                 </div>
 
+
             </div>
+
 
 
             <!-- CONTACT INFORMATION -->
 
             <div class="message-contact">
+
 
                 <div>
 
@@ -283,7 +518,9 @@ function renderMessage(message){
 
                 </div>
 
+
             </div>
+
 
 
             <!-- SUBJECT -->
@@ -291,7 +528,7 @@ function renderMessage(message){
             <div class="message-subject">
 
                 <span>
-                    Subject
+                    SUBJECT
                 </span>
 
                 <h4>
@@ -306,12 +543,13 @@ function renderMessage(message){
             </div>
 
 
+
             <!-- MESSAGE -->
 
             <div class="message-body">
 
                 <span>
-                    Message
+                    MESSAGE
                 </span>
 
                 <p>
@@ -326,6 +564,7 @@ function renderMessage(message){
             </div>
 
 
+
             <!-- SOURCE -->
 
             <div class="message-source">
@@ -336,12 +575,13 @@ function renderMessage(message){
 
                     ${escapeHTML(
                         message.source ||
-                        "Website"
+                        "Contact Page"
                     )}
 
                 </span>
 
             </div>
+
 
 
             <!-- ACTIONS -->
@@ -358,7 +598,7 @@ function renderMessage(message){
 
                     <a
                         href="tel:${phone}"
-                        class="btn-primary">
+                        class="message-btn call">
 
                         <i class="fa-solid fa-phone"></i>
 
@@ -386,7 +626,7 @@ function renderMessage(message){
                         href="https://wa.me/${whatsappNumber}"
                         target="_blank"
                         rel="noopener"
-                        class="btn-whatsapp">
+                        class="message-btn whatsapp">
 
                         <i class="fa-brands fa-whatsapp"></i>
 
@@ -412,7 +652,7 @@ function renderMessage(message){
 
                     <a
                         href="mailto:${message.email}"
-                        class="btn-secondary">
+                        class="message-btn email">
 
                         <i class="fa-solid fa-envelope"></i>
 
@@ -428,12 +668,147 @@ function renderMessage(message){
 
                 }
 
+
+                <button
+                    type="button"
+                    class="message-btn delete delete-message"
+                    data-id="${message.id}">
+
+                    <i class="fa-solid fa-trash"></i>
+
+                    Delete
+
+                </button>
+
+
             </div>
 
 
         </article>
 
     `;
+
+}
+
+
+/* ==========================================================
+                    MESSAGE ACTIONS
+========================================================== */
+
+function initializeMessageActions(){
+
+    const deleteButtons =
+        document.querySelectorAll(
+            ".delete-message"
+        );
+
+
+    deleteButtons.forEach(button => {
+
+        button.addEventListener(
+
+            "click",
+
+            async () => {
+
+                const id =
+                    button.dataset.id;
+
+
+                const confirmed =
+                    confirm(
+                        "Are you sure you want to permanently delete this message?"
+                    );
+
+
+                if(!confirmed){
+
+                    return;
+
+                }
+
+
+                try{
+
+                    button.disabled =
+                        true;
+
+
+                    button.innerHTML = `
+
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+
+                        Deleting...
+
+                    `;
+
+
+                    await MessagesService.delete(
+                        id
+                    );
+
+
+                    const card =
+                        document.querySelector(
+                            `.message-card[data-message-id="${id}"]`
+                        );
+
+
+                    if(card){
+
+                        card.classList.add(
+                            "message-removing"
+                        );
+
+
+                        setTimeout(
+                            () => {
+
+                                card.remove();
+
+                                loadMessages();
+
+                            },
+                            300
+                        );
+
+                    }
+
+
+                }
+
+                catch(error){
+
+                    console.error(
+                        "Failed to delete message:",
+                        error
+                    );
+
+
+                    alert(
+                        "Failed to delete the message. Please try again."
+                    );
+
+
+                    button.disabled =
+                        false;
+
+
+                    button.innerHTML = `
+
+                        <i class="fa-solid fa-trash"></i>
+
+                        Delete
+
+                    `;
+
+                }
+
+            }
+
+        );
+
+    });
 
 }
 
@@ -449,10 +824,8 @@ function getStatusClass(status){
         status || "New"
 
     )
-
-    .toLowerCase()
-
-    .replace(/\s+/g, "-");
+        .toLowerCase()
+        .replace(/\s+/g, "-");
 
 }
 
@@ -469,13 +842,23 @@ function formatDate(timestamp){
 
     }
 
+
     return new Date(timestamp)
+
         .toLocaleString(
+
             "en-KE",
+
             {
-                dateStyle: "medium",
-                timeStyle: "short"
+
+                dateStyle:
+                    "medium",
+
+                timeStyle:
+                    "short"
+
             }
+
         );
 
 }
@@ -489,14 +872,29 @@ function escapeHTML(value){
 
     return String(value)
 
-        .replace(/&/g, "&amp;")
+        .replace(
+            /&/g,
+            "&amp;"
+        )
 
-        .replace(/</g, "&lt;")
+        .replace(
+            /</g,
+            "&lt;"
+        )
 
-        .replace(/>/g, "&gt;")
+        .replace(
+            />/g,
+            "&gt;"
+        )
 
-        .replace(/"/g, "&quot;")
+        .replace(
+            /"/g,
+            "&quot;"
+        )
 
-        .replace(/'/g, "&#039;");
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
 }

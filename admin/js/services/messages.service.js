@@ -6,7 +6,8 @@ import {
     ref,
     push,
     set,
-    get
+    get,
+    remove
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
 
 import {
@@ -29,6 +30,7 @@ export async function addMessage(message){
     await set(
         newMessage,
         {
+
             ...message,
 
             createdAt:
@@ -36,6 +38,7 @@ export async function addMessage(message){
 
             status:
                 message.status || "New"
+
         }
     );
 
@@ -55,16 +58,20 @@ export async function getMessages(){
             ref(db, "messages")
         );
 
+
     if(!snapshot.exists()){
 
         return [];
 
     }
 
+
     const data =
         snapshot.val();
 
+
     return Object.entries(data)
+
         .map(
             ([id, message]) => ({
 
@@ -79,6 +86,34 @@ export async function getMessages(){
 
 
 /* ==========================================================
+                    DELETE MESSAGE
+========================================================== */
+
+export async function deleteMessage(id){
+
+    if(!id){
+
+        throw new Error(
+            "Message ID is required."
+        );
+
+    }
+
+
+    await remove(
+        ref(
+            db,
+            `messages/${id}`
+        )
+    );
+
+
+    return true;
+
+}
+
+
+/* ==========================================================
                     DEFAULT EXPORT
 ========================================================== */
 
@@ -88,8 +123,12 @@ const MessagesService = {
         addMessage,
 
     getAll:
-        getMessages
+        getMessages,
+
+    delete:
+        deleteMessage
 
 };
+
 
 export default MessagesService;
