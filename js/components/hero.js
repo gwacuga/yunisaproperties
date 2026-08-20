@@ -20,14 +20,14 @@ export function renderHero(){
 
         <h1>
 
-            Find Your Dream Home With Confidence
+           Yunisa Properties — Find Your Dream Home With Confidence
 
-        </h1>
+        </h1>       
 
         <p>
 
             Discover beautiful homes, apartments, land,
-            commercial spaces and Airbnb properties across Kenya.
+            commercial spaces and Airbnb properties across Kenya with Yunisa Properties.
             Whether you're buying, renting or investing,
             Yunisa connects you with verified listings that match
             your lifestyle and budget.

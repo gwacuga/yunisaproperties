@@ -1,12 +1,15 @@
 /* ==========================================================
                 ABOUT APPLICATION
 ========================================================== */
+import AnalyticsService
+from "./services/analytics.service.js";
+
 
 import CONFIG from "./config.js";
 
 import {
 
-renderHeader
+    renderHeader
 
 }
 
@@ -14,7 +17,7 @@ from "./components/header.js";
 
 import {
 
-renderFooter
+    renderFooter
 
 }
 
@@ -22,7 +25,7 @@ from "./components/footer.js";
 
 import {
 
-renderFloatingContact
+    renderFloatingContact
 
 }
 
@@ -30,7 +33,7 @@ from "./components/floating-contact.js";
 
 import {
 
-initializeMobileMenu
+    initializeMobileMenu
 
 }
 
@@ -38,39 +41,42 @@ from "./components/mobile-menu.js";
 
 import {
 
-renderAbout
+    renderAbout
 
 }
 
+
 from "./pages/about.js";
 
-async function initializeAbout(){
+async function initializeAbout() {
 
-document.title=
+    AnalyticsService.recordWebsiteVisit();
 
-`${CONFIG.COMPANY.NAME} | About`;
+    document.title =
 
-const app=
+        `${CONFIG.COMPANY.NAME} | About`;
 
-document.getElementById("app");
+    const app =
 
-app.innerHTML=
+        document.getElementById("app");
 
-renderHeader()
+    app.innerHTML =
 
-+
+        renderHeader()
 
-renderAbout()
+    +
 
-+
+    renderAbout()
 
-renderFooter()
+    +
 
-+
+    renderFooter()
 
-renderFloatingContact();
+    +
 
-initializeMobileMenu();
+    renderFloatingContact();
+
+    initializeMobileMenu();
 
 }
 

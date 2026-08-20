@@ -5,20 +5,16 @@
 import { navigate } from "./router.js";
 
 import {
-
     renderLayout
-
 } from "./layouts/layout.js";
 
 import Drawer from "./components/drawer.js";
 
 import {
-
     renderPropertyForm,
-
     initializePropertyForm
-
 } from "./forms/property-form.js";
+
 
 /* ==========================================================
                     INIT ADMIN
@@ -33,21 +29,18 @@ export async function initAdmin({
 }) {
 
     const app =
-
         document.getElementById(
             "app"
         );
 
+
     const pageContent =
+        typeof content === "function" ?
+        await content() :
+        await content;
 
-        typeof content === "function"
-
-            ? await content()
-
-            : await content;
 
     app.innerHTML =
-
         renderLayout({
 
             title,
@@ -55,6 +48,7 @@ export async function initAdmin({
             content: pageContent
 
         });
+
 
     initializeSidebar();
 
@@ -64,6 +58,7 @@ export async function initAdmin({
 
 }
 
+
 /* ==========================================================
                     SIDEBAR
 ========================================================== */
@@ -71,52 +66,78 @@ export async function initAdmin({
 function initializeSidebar() {
 
     const sidebar =
-
         document.getElementById(
             "sidebar"
         );
 
-    const openButton =
 
+    const openButton =
         document.getElementById(
             "openSidebar"
         );
 
-    const closeButton =
 
+    const closeButton =
         document.getElementById(
             "closeSidebar"
         );
 
-    openButton?.addEventListener(
 
-        "click",
+    /* ======================================================
+                    OPEN SIDEBAR
+    ====================================================== */
 
-        () => {
+    if (openButton) {
 
-            sidebar.classList.add(
-                "show"
-            );
+        openButton.addEventListener(
 
-        }
+            "click",
 
-    );
+            function() {
 
-    closeButton?.addEventListener(
+                if (sidebar) {
 
-        "click",
+                    sidebar.classList.add(
+                        "show"
+                    );
 
-        () => {
+                }
 
-            sidebar.classList.remove(
-                "show"
-            );
+            }
 
-        }
+        );
 
-    );
+    }
+
+
+    /* ======================================================
+                    CLOSE SIDEBAR
+    ====================================================== */
+
+    if (closeButton) {
+
+        closeButton.addEventListener(
+
+            "click",
+
+            function() {
+
+                if (sidebar) {
+
+                    sidebar.classList.remove(
+                        "show"
+                    );
+
+                }
+
+            }
+
+        );
+
+    }
 
 }
+
 
 /* ==========================================================
                 SIDEBAR NAVIGATION
@@ -125,34 +146,49 @@ function initializeSidebar() {
 function initializeSidebarNavigation() {
 
     const links =
-
         document.querySelectorAll(
             ".sidebar-menu a"
         );
 
-    links.forEach(link => {
 
-        link.addEventListener(
+    links.forEach(
 
-            "click",
+        function(link) {
 
-            async event => {
+            link.addEventListener(
 
-                event.preventDefault();
+                "click",
 
-                const page =
+                async function(event) {
 
-                    link.dataset.page;
+                    event.preventDefault();
 
-                await navigate(page);
 
-            }
+                    const page =
+                        link.dataset.page;
 
-        );
 
-    });
+                    if (!page) {
+
+                        return;
+
+                    }
+
+
+                    await navigate(
+                        page
+                    );
+
+                }
+
+            );
+
+        }
+
+    );
 
 }
+
 
 /* ==========================================================
                     DRAWER
@@ -161,18 +197,23 @@ function initializeSidebarNavigation() {
 function initializeDrawer() {
 
     const button =
-
         document.getElementById(
             "openPropertyDrawer"
         );
 
-    if (!button) return;
+
+    if (!button) {
+
+        return;
+
+    }
+
 
     button.addEventListener(
 
         "click",
 
-        () => {
+        function() {
 
             Drawer.open(
 

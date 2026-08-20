@@ -60,7 +60,8 @@ import {
 from "./components/mobile-menu.js";
 
 
-
+import AnalyticsService
+from "./services/analytics.service.js";
 
 
 /* ==========================================================
@@ -68,9 +69,9 @@ from "./components/mobile-menu.js";
 ========================================================== */
 
 
-async function initializeProperties(){
+async function initializeProperties() {
 
-
+    AnalyticsService.recordWebsiteVisit();
 
     document.title =
 
@@ -92,7 +93,7 @@ async function initializeProperties(){
 
 
 
-    if(!app){
+    if (!app) {
 
 
         console.error(
@@ -118,27 +119,27 @@ async function initializeProperties(){
 
 
 
-        +
+    +
 
 
 
-        await renderProperties()
+    await renderProperties()
 
 
 
-        +
+    +
 
 
 
-        renderFooter()
+    renderFooter()
 
 
 
-        +
+    +
 
 
 
-        renderFloatingContact();
+    renderFloatingContact();
 
 
 

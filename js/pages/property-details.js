@@ -36,7 +36,8 @@ from "../components/property-card.js";
 import EnquiriesService
 from "../services/enquiries.service.js";
 
-
+import AnalyticsService
+from "../services/analytics.service.js";
 
 
 
@@ -45,7 +46,7 @@ from "../services/enquiries.service.js";
 ========================================================== */
 
 
-function initializeGallery(){
+function initializeGallery() {
 
 
     const mainImage =
@@ -71,10 +72,9 @@ function initializeGallery(){
 
 
 
-    if(
-        !mainImage ||
+    if (!mainImage ||
         !mainCaption
-    ){
+    ) {
 
         return;
 
@@ -89,7 +89,7 @@ function initializeGallery(){
 
             "click",
 
-            ()=>{
+            () => {
 
 
                 mainImage.src =
@@ -133,7 +133,7 @@ function initializeGallery(){
                 SIMILAR PROPERTIES
 ========================================================== */
 
-function renderSimilarProperties(currentProperty, properties){
+function renderSimilarProperties(currentProperty, properties) {
 
     const similar = properties
         .filter(property =>
@@ -143,9 +143,9 @@ function renderSimilarProperties(currentProperty, properties){
             property.type === currentProperty.type
 
         )
-        .slice(0,4);
+        .slice(0, 4);
 
-    if(!similar.length){
+    if (!similar.length) {
 
         return "";
 
@@ -188,14 +188,14 @@ function renderSimilarProperties(currentProperty, properties){
                 INITIALIZE ENQUIRY FORM
 ========================================================== */
 
-function initializeEnquiryForm(property){
+function initializeEnquiryForm(property) {
 
     const form =
         document.getElementById(
             "propertyEnquiryForm"
         );
 
-    if(!form){
+    if (!form) {
 
         return;
 
@@ -205,48 +205,39 @@ function initializeEnquiryForm(property){
 
         "submit",
 
-        async(event)=>{
+        async(event) => {
 
             event.preventDefault();
 
-            try{
+            try {
 
                 const enquiry = {
 
-                    propertyId:
-                        property.id,
+                    propertyId: property.id,
 
-                    propertyTitle:
-                        property.title,
+                    propertyTitle: property.title,
 
-                    propertyType:
-                        property.type,
+                    propertyType: property.type,
 
-                    propertyStatus:
-                        property.status,
+                    propertyStatus: property.status,
 
-                    customerName:
-                        document.getElementById(
-                            "customerName"
-                        ).value.trim(),
+                    customerName: document.getElementById(
+                        "customerName"
+                    ).value.trim(),
 
-                    customerPhone:
-                        document.getElementById(
-                            "customerPhone"
-                        ).value.trim(),
+                    customerPhone: document.getElementById(
+                        "customerPhone"
+                    ).value.trim(),
 
-                    customerEmail:
-                        document.getElementById(
-                            "customerEmail"
-                        ).value.trim(),
+                    customerEmail: document.getElementById(
+                        "customerEmail"
+                    ).value.trim(),
 
-                    message:
-                        document.getElementById(
-                            "customerMessage"
-                        ).value.trim(),
+                    message: document.getElementById(
+                        "customerMessage"
+                    ).value.trim(),
 
-                    status:
-                        "New"
+                    status: "New"
 
                 };
 
@@ -265,9 +256,7 @@ function initializeEnquiryForm(property){
 
                 form.reset();
 
-            }
-
-            catch(error){
+            } catch (error) {
 
                 console.error(error);
 
@@ -290,7 +279,7 @@ function initializeEnquiryForm(property){
 ========================================================== */
 
 
-async function loadProperty(){
+async function loadProperty() {
 
 
 
@@ -315,7 +304,7 @@ async function loadProperty(){
 
 
 
-    if(!id){
+    if (!id) {
 
         console.error(
             "No property ID"
@@ -334,7 +323,7 @@ async function loadProperty(){
 
     const allProperties =
 
-    await PropertiesService.getAll();
+        await PropertiesService.getAll();
 
 
 
@@ -343,9 +332,15 @@ async function loadProperty(){
         property
     );
 
+    /* ======================================================
+                    RECORD PROPERTY VIEW
+    ====================================================== */
 
+    AnalyticsService.recordPropertyView(
+        property
+    );
 
-    if(!property){
+    if (!property) {
 
         console.error(
             "Property not found"
@@ -359,177 +354,177 @@ async function loadProperty(){
                 PROPERTY FEATURES
 ====================================================== */
 
-const detailFeatures = [];
+    const detailFeatures = [];
 
-// Property Type
-detailFeatures.push(`
+    // Property Type
+    detailFeatures.push(`
 <div>
 🏠
 ${property.type || "Property"}
 </div>
 `);
 
-// Bedrooms
-if (property.bedrooms) {
+    // Bedrooms
+    if (property.bedrooms) {
 
-    detailFeatures.push(`
+        detailFeatures.push(`
     <div>
     🛏
     ${property.bedrooms} Bedrooms
     </div>
     `);
 
-}
+    }
 
-// Bathrooms
-if (property.bathrooms) {
+    // Bathrooms
+    if (property.bathrooms) {
 
-    detailFeatures.push(`
+        detailFeatures.push(`
     <div>
     🚿
     ${property.bathrooms} Bathrooms
     </div>
     `);
 
-}
+    }
 
-// Parking
-if (property.parking) {
+    // Parking
+    if (property.parking) {
 
-    detailFeatures.push(`
+        detailFeatures.push(`
     <div>
     🚗
     ${property.parking} Parking
     </div>
     `);
 
-}
+    }
 
-// House Size
-if (property.size) {
+    // House Size
+    if (property.size) {
 
-    detailFeatures.push(`
+        detailFeatures.push(`
     <div>
     📐
     ${property.size}
     </div>
     `);
 
-}
+    }
 
-// Compound Size
-if (property.compoundSize) {
+    // Compound Size
+    if (property.compoundSize) {
 
-    detailFeatures.push(`
+        detailFeatures.push(`
     <div>
     🌳
     ${property.compoundSize}
     </div>
     `);
 
-}
+    }
 
-// Land Size
-if (property.landSize) {
+    // Land Size
+    if (property.landSize) {
 
-    detailFeatures.push(`
+        detailFeatures.push(`
     <div>
     🌍
     ${property.landSize}
     </div>
     `);
 
-}
+    }
 
-// Floors
-if (property.floors) {
+    // Floors
+    if (property.floors) {
 
-    detailFeatures.push(`
+        detailFeatures.push(`
     <div>
     🏢
     ${property.floors} Floors
     </div>
     `);
 
-}
+    }
 
-/* ======================================================
-                PROPERTY DETAILS LIST
-====================================================== */
+    /* ======================================================
+                    PROPERTY DETAILS LIST
+    ====================================================== */
 
-const propertyDetails = [];
+    const propertyDetails = [];
 
-// House Type
-if (property.houseType) {
+    // House Type
+    if (property.houseType) {
 
-    propertyDetails.push(`
+        propertyDetails.push(`
         <div class="detail-row">
             <span>House Type</span>
             <strong>${property.houseType}</strong>
         </div>
     `);
 
-}
+    }
 
-// Furnishing
-if (property.furnishing) {
+    // Furnishing
+    if (property.furnishing) {
 
-    propertyDetails.push(`
+        propertyDetails.push(`
         <div class="detail-row">
             <span>Furnishing</span>
             <strong>${property.furnishing}</strong>
         </div>
     `);
 
-}
+    }
 
-// Land Size
-if (property.landSize) {
+    // Land Size
+    if (property.landSize) {
 
-    propertyDetails.push(`
+        propertyDetails.push(`
         <div class="detail-row">
             <span>Land Size</span>
             <strong>${property.landSize}</strong>
         </div>
     `);
 
-}
+    }
 
-// Commercial Type
-if (property.commercialType) {
+    // Commercial Type
+    if (property.commercialType) {
 
-    propertyDetails.push(`
+        propertyDetails.push(`
         <div class="detail-row">
             <span>Commercial Type</span>
             <strong>${property.commercialType}</strong>
         </div>
     `);
 
-}
+    }
 
-// Bedrooms
-if (property.bedrooms) {
+    // Bedrooms
+    if (property.bedrooms) {
 
-    propertyDetails.push(`
+        propertyDetails.push(`
         <div class="detail-row">
             <span>Bedrooms</span>
             <strong>${property.bedrooms}</strong>
         </div>
     `);
 
-}
+    }
 
-// Bathrooms
-if (property.bathrooms) {
+    // Bathrooms
+    if (property.bathrooms) {
 
-    propertyDetails.push(`
+        propertyDetails.push(`
         <div class="detail-row">
             <span>Bathrooms</span>
             <strong>${property.bathrooms}</strong>
         </div>
     `);
 
-}
+    }
 
 
     const app =
@@ -550,11 +545,11 @@ if (property.bathrooms) {
 
 
 
-        +
+    +
 
 
 
-        `
+    `
 
 
 <main class="property-details-page">

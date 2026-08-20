@@ -1,4 +1,3 @@
-
 /* ==========================================================
                     CONTACT APPLICATION
 ========================================================== */
@@ -20,12 +19,16 @@ import {
     renderContact
 } from "./pages/contact.js";
 
+import AnalyticsService
+from "./services/analytics.service.js";
+
 
 /* ==========================================================
                     INITIALIZE CONTACT
 ========================================================== */
 
 function initializeContact() {
+    AnalyticsService.recordWebsiteVisit();
 
     const app = document.getElementById("app");
 
@@ -51,4 +54,3 @@ function initializeContact() {
 ========================================================== */
 
 initializeContact();
-

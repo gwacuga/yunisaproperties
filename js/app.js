@@ -59,15 +59,16 @@ import {
 }
 from "./components/floating-contact.js";
 
-
+import AnalyticsService
+from "./services/analytics.service.js";
 
 /* ==========================================================
                     INITIALIZE APP
 ========================================================== */
 
 
-async function initializeApp(){
-
+async function initializeApp() {
+    AnalyticsService.recordWebsiteVisit();
 
     const app =
 
@@ -76,7 +77,7 @@ async function initializeApp(){
         );
 
 
-    if(!app){
+    if (!app) {
 
         console.error(
             "App container missing"
@@ -94,22 +95,22 @@ async function initializeApp(){
         renderHeader()
 
 
-        +
+    +
 
 
-        await renderHome()
+    await renderHome()
 
 
-        +
+    +
 
 
-        renderFooter()
+    renderFooter()
 
 
-        +
+    +
 
 
-        renderFloatingContact();
+    renderFloatingContact();
 
 
 

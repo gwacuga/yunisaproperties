@@ -25,6 +25,10 @@ import {
     initializeMessagesPage
 } from "./pages/messages.js";
 
+import {
+    renderViewingsPage,
+    initializeViewingsPage
+} from "./pages/viewings.js";
 
 /* ==========================================================
                         NAVIGATE
@@ -47,17 +51,16 @@ export async function navigate(
 
                 title: "Dashboard",
 
-                content:
-                    renderDashboard
+                content: renderDashboard
 
             });
 
             break;
 
 
-        /* ==================================================
-                            PROPERTIES
-        ================================================== */
+            /* ==================================================
+                                PROPERTIES
+            ================================================== */
 
         case "properties":
 
@@ -65,8 +68,7 @@ export async function navigate(
 
                 title: "Properties",
 
-                content:
-                    renderPropertiesPage
+                content: renderPropertiesPage
 
             });
 
@@ -75,9 +77,9 @@ export async function navigate(
             break;
 
 
-        /* ==================================================
-                            ENQUIRIES
-        ================================================== */
+            /* ==================================================
+                                ENQUIRIES
+            ================================================== */
 
         case "enquiries":
 
@@ -85,8 +87,7 @@ export async function navigate(
 
                 title: "Enquiries",
 
-                content:
-                    renderEnquiriesPage
+                content: renderEnquiriesPage
 
             });
 
@@ -95,9 +96,9 @@ export async function navigate(
             break;
 
 
-        /* ==================================================
-                            MESSAGES
-        ================================================== */
+            /* ==================================================
+                                MESSAGES
+            ================================================== */
 
         case "messages":
 
@@ -105,19 +106,34 @@ export async function navigate(
 
                 title: "Messages",
 
-                content:
-                    renderMessagesPage
+                content: renderMessagesPage
 
             });
 
             initializeMessagesPage();
 
             break;
+            /* ==================================================
+                    VIEWINGS
+================================================== */
 
+        case "viewings":
 
-        /* ==================================================
-                        UNKNOWN PAGE
-        ================================================== */
+            await initAdmin({
+
+                title: "Viewings",
+
+                content: renderViewingsPage
+
+            });
+
+            await initializeViewingsPage();
+
+            break;
+
+            /* ==================================================
+                            UNKNOWN PAGE
+            ================================================== */
 
         default:
 

@@ -121,12 +121,10 @@ export function renderSidebar() {
                     href="#"
                     data-page="viewings">
 
-                    <i class="fa-solid fa-calendar-check"></i>
+                     <i class="fa-solid fa-calendar-check"></i>
 
-                    <span>
-
-                        Viewings
-
+                   <span>
+                         Viewings
                     </span>
 
                 </a>

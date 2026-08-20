@@ -27,6 +27,23 @@ const CONFIG = {
 
         TAGLINE:
             "Find your dream property",
+        
+        SEO: {
+
+        SITE_TITLE:
+            "Yunisa Properties | Find Your Dream Property in Kenya",
+
+        DESCRIPTION:
+            "Yunisa Properties helps you find houses, apartments, land, commercial properties and other properties across Kenya.",
+
+        KEYWORDS:
+            "Yunisa Properties, real estate Kenya, houses for sale Kenya, land for sale Kenya, apartments Kenya, property Kenya",
+
+        URL:
+            "https://yunisaproperties.com/"
+
+              },
+            
 
         PHONE:
             "+254723861527",
