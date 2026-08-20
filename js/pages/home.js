@@ -28,6 +28,16 @@ import {
 }
 from "../components/home-about.js";
 
+import {
+    ref,
+    get
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+
+import {
+    db
+}
+from "../firebase.js";
 
 
 /* ==========================================================
@@ -320,6 +330,62 @@ ${renderHomeAbout()}
 
 ${renderFeaturedLocations()}
 
+<!-- ======================================================
+                    LATEST BLOGS
+====================================================== -->
+
+<section class="latest-blogs">
+
+    <div class="latest-blogs-header">
+
+        <div>
+
+            <span class="section-label">
+                YUNISA INSIGHTS
+            </span>
+
+            <h2>
+                Latest From Our Blog
+            </h2>
+
+            <p>
+                Discover real estate insights, property tips,
+                market updates and useful information from Yunisa.
+            </p>
+
+        </div>
+
+        <a
+            href="blog.html"
+            class="blog-view-all">
+
+            View All Blogs
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </a>
+
+    </div>
+
+
+    <div
+        id="latestBlogsContainer"
+        class="latest-blogs-grid">
+
+        <div class="latest-blog-loading">
+
+            <i class="fa-solid fa-spinner fa-spin"></i>
+
+            <p>
+                Loading latest blogs...
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
 
     <!-- WHY US -->
 
@@ -527,5 +593,340 @@ console.table(featuredOnly);
         );
 
     }
+
+}
+
+/* ==========================================================
+                    LOAD LATEST BLOGS
+========================================================== */
+
+export async function loadLatestBlogs(){
+
+    const container =
+        document.getElementById(
+            "latestBlogsContainer"
+        );
+
+
+    if(!container){
+
+        return;
+
+    }
+
+
+    try{
+
+        const blogsReference =
+            ref(
+                db,
+                "blogs"
+            );
+
+
+        const snapshot =
+            await get(
+                blogsReference
+            );
+
+
+        if(!snapshot.exists()){
+
+            showNoBlogs(
+                container
+            );
+
+            return;
+
+        }
+
+
+        const data =
+            snapshot.val();
+
+
+        const blogs =
+
+            Object.entries(data)
+
+                .map(
+                    ([id, blog]) => ({
+
+                        id,
+
+                        ...blog
+
+                    })
+                )
+
+                .filter(
+
+                    blog =>
+
+                        String(
+                            blog.status || ""
+                        ).toLowerCase() ===
+                        "published"
+
+                )
+
+                .sort(
+
+                    (a,b) =>
+
+                        (b.createdAt || 0) -
+                        (a.createdAt || 0)
+
+                )
+
+                .slice(0,3);
+
+
+        if(!blogs.length){
+
+            showNoBlogs(
+                container
+            );
+
+            return;
+
+        }
+
+
+        container.innerHTML =
+
+            blogs
+
+                .map(
+                    renderLatestBlogCard
+                )
+
+                .join("");
+
+
+    }
+
+    catch(error){
+
+        console.error(
+            "Failed to load latest blogs:",
+            error
+        );
+
+
+        container.innerHTML = `
+
+            <div class="latest-blog-error">
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                <p>
+                    Unable to load blogs.
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+/* ==========================================================
+                    BLOG CARD
+========================================================== */
+
+function renderLatestBlogCard(blog){
+
+    const image =
+
+        blog.image ||
+
+        "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80";
+
+
+    return `
+
+        <article class="latest-blog-card">
+
+
+            <div class="latest-blog-image">
+
+                <img
+                    src="${image}"
+                    alt="${escapeHTML(
+                        blog.title || "Yunisa Blog"
+                    )}"
+                    loading="lazy">
+
+            </div>
+
+
+            <div class="latest-blog-content">
+
+
+                <div class="latest-blog-meta">
+
+                    <span>
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                        ${formatBlogDate(
+                            blog.createdAt
+                        )}
+
+                    </span>
+
+
+                    <span>
+
+                        <i class="fa-solid fa-user"></i>
+
+                        ${escapeHTML(
+                            blog.author ||
+                            "Yunisa Real Estate"
+                        )}
+
+                    </span>
+
+                </div>
+
+
+                <h3>
+
+                    ${escapeHTML(
+                        blog.title ||
+                        "Untitled Blog"
+                    )}
+
+                </h3>
+
+
+                <p>
+
+                    ${escapeHTML(
+                        blog.excerpt ||
+                        ""
+                    )}
+
+                </p>
+
+
+                <a
+                     href="blog.html?id=${encodeURIComponent(blog.id)}"
+                     class="latest-blog-read-more">
+
+                    Read More
+
+                             <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+
+            </div>
+
+        </article>
+
+    `;
+
+}
+
+/* ==========================================================
+                    BLOG DATE
+========================================================== */
+
+function formatBlogDate(timestamp){
+
+    if(!timestamp){
+
+        return "";
+
+    }
+
+
+    return new Date(
+        timestamp
+    ).toLocaleDateString(
+
+        "en-KE",
+
+        {
+
+            year:
+                "numeric",
+
+            month:
+                "short",
+
+            day:
+                "numeric"
+
+        }
+
+    );
+
+}
+
+
+/* ==========================================================
+                    ESCAPE HTML
+========================================================== */
+
+function escapeHTML(value){
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* ==========================================================
+                    NO BLOGS
+========================================================== */
+
+function showNoBlogs(container){
+
+    container.innerHTML = `
+
+        <div class="latest-blog-empty">
+
+            <i class="fa-solid fa-newspaper"></i>
+
+            <h3>
+                No blog posts yet
+            </h3>
+
+            <p>
+                Check back soon for our latest
+                real estate insights.
+            </p>
+
+        </div>
+
+    `;
 
 }

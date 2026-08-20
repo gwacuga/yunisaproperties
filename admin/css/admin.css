@@ -2168,3 +2168,1001 @@ body {
     }
 
 }
+
+/* ==========================================================
+                    BLOG FORM
+========================================================== */
+
+.blog-form-page {
+
+    width: 100%;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+}
+
+
+/* ==========================================================
+                    BLOG FORM CONTAINER
+========================================================== */
+
+.blog-form {
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 20px;
+
+    padding: 35px;
+
+    box-shadow: var(--shadow);
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 24px;
+
+}
+
+
+/* ==========================================================
+                    FORM GROUP
+========================================================== */
+
+.blog-form .form-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+
+.blog-form label {
+
+    font-weight: 600;
+
+    color: var(--secondary);
+
+    font-size: 15px;
+
+}
+
+
+.blog-form input,
+
+.blog-form textarea,
+
+.blog-form select {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 14px 16px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    background: var(--background);
+
+    color: var(--secondary);
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: .25s ease;
+
+}
+
+
+.blog-form textarea {
+
+    resize: vertical;
+
+    min-height: 140px;
+
+    line-height: 1.6;
+
+}
+
+
+.blog-form input:focus,
+
+.blog-form textarea:focus,
+
+.blog-form select:focus {
+
+    border-color: var(--primary);
+
+    background: var(--white);
+
+    box-shadow:
+
+        0 0 0 3px
+
+        rgba(15, 118, 110, .10);
+
+}
+
+
+/* ==========================================================
+                    IMAGE UPLOAD
+========================================================== */
+
+.blog-image-upload {
+
+    border: 2px dashed var(--border);
+
+    border-radius: 18px;
+
+    padding: 40px 25px;
+
+    text-align: center;
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            rgba(15,118,110,.04),
+
+            rgba(245,158,11,.04)
+
+        );
+
+    transition: .3s ease;
+
+}
+
+
+.blog-image-upload:hover {
+
+    border-color: var(--primary);
+
+    transform: translateY(-2px);
+
+}
+
+
+.blog-image-upload > i {
+
+    display: block;
+
+    font-size: 45px;
+
+    color: var(--primary);
+
+    margin-bottom: 15px;
+
+}
+
+
+.blog-image-upload h4 {
+
+    margin: 0 0 8px;
+
+    color: var(--secondary);
+
+    font-size: 18px;
+
+}
+
+
+.blog-image-upload p {
+
+    margin: 0 0 20px;
+
+    color: var(--text);
+
+}
+
+
+.blog-image-upload .btn-secondary {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+}
+
+
+/* ==========================================================
+                    IMAGE PREVIEW
+========================================================== */
+
+.blog-image-preview {
+
+    margin-top: 18px;
+
+}
+
+
+.blog-image-preview-card {
+
+    position: relative;
+
+    width: 100%;
+
+    max-width: 650px;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    box-shadow: var(--shadow);
+
+    background: var(--secondary);
+
+}
+
+
+.blog-image-preview-card img {
+
+    width: 100%;
+
+    height: 330px;
+
+    display: block;
+
+    object-fit: cover;
+
+}
+
+
+/* ==========================================================
+                    REMOVE IMAGE BUTTON
+========================================================== */
+
+.remove-blog-image {
+
+    position: absolute;
+
+    top: 14px;
+
+    right: 14px;
+
+    width: 40px;
+
+    height: 40px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(15, 23, 42, .85);
+
+    color: white;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition: .25s ease;
+
+}
+
+
+.remove-blog-image:hover {
+
+    background: #dc2626;
+
+    transform: scale(1.08);
+
+}
+
+
+/* ==========================================================
+                    IMAGE STATUS
+========================================================== */
+
+.blog-image-status {
+
+    margin: 8px 0 0;
+
+    font-size: 14px;
+
+    color: var(--text);
+
+}
+
+
+/* ==========================================================
+                    FORM ACTIONS
+========================================================== */
+
+.blog-form-actions {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding-top: 10px;
+
+    border-top: 1px solid var(--border);
+
+}
+
+
+.blog-form-actions button {
+
+    min-width: 150px;
+
+}
+
+
+/* ==========================================================
+                    SAVE STATUS
+========================================================== */
+
+.blog-form-status {
+
+    margin: 0;
+
+    text-align: right;
+
+    font-size: 14px;
+
+    color: var(--text);
+
+}
+
+
+/* ==========================================================
+                    DISABLED BUTTON
+========================================================== */
+
+.blog-form button:disabled {
+
+    opacity: .6;
+
+    cursor: not-allowed;
+
+}
+
+
+/* ==========================================================
+                    TABLET
+========================================================== */
+
+@media (max-width: 900px) {
+
+    .blog-form {
+
+        padding: 28px;
+
+    }
+
+
+    .blog-image-preview-card {
+
+        max-width: 100%;
+
+    }
+
+
+    .blog-image-preview-card img {
+
+        height: 280px;
+
+    }
+
+}
+
+
+/* ==========================================================
+                    MOBILE
+========================================================== */
+
+@media (max-width: 600px) {
+
+    .blog-form-page {
+
+        width: 100%;
+
+    }
+
+
+    .blog-form {
+
+        padding: 20px 16px;
+
+        border-radius: 15px;
+
+        gap: 20px;
+
+    }
+
+
+    .blog-image-upload {
+
+        padding: 30px 15px;
+
+        border-radius: 14px;
+
+    }
+
+
+    .blog-image-upload > i {
+
+        font-size: 38px;
+
+    }
+
+
+    .blog-image-upload h4 {
+
+        font-size: 16px;
+
+    }
+
+
+    .blog-image-preview-card {
+
+        border-radius: 12px;
+
+    }
+
+
+    .blog-image-preview-card img {
+
+        height: 210px;
+
+    }
+
+
+    .blog-form-actions {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+
+    .blog-form-actions button {
+
+        width: 100%;
+
+        min-width: 0;
+
+    }
+
+
+    .blog-form-status {
+
+        text-align: center;
+
+    }
+
+}
+
+
+/* ==========================================================
+                    SMALL PHONES
+========================================================== */
+
+@media (max-width: 380px) {
+
+    .blog-form {
+
+        padding: 16px 12px;
+
+    }
+
+
+    .blog-image-upload {
+
+        padding: 25px 10px;
+
+    }
+
+
+    .blog-image-preview-card img {
+
+        height: 180px;
+
+    }
+
+
+    .blog-form input,
+
+    .blog-form textarea,
+
+    .blog-form select {
+
+        font-size: 14px;
+
+        padding: 12px;
+
+    }
+
+}
+
+/* ==========================================================
+                    BLOG CARDS
+========================================================== */
+
+.blogs-container {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(280px, 1fr));
+
+    gap: 24px;
+
+    margin-top: 30px;
+
+}
+
+
+/* ==========================================================
+                    BLOG CARD
+========================================================== */
+
+.blog-card {
+
+    background: var(--white, #ffffff);
+
+    border: 1px solid var(--border, #e2e8f0);
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.08);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+}
+
+
+.blog-card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 35px rgba(15, 23, 42, 0.12);
+
+}
+
+
+/* ==========================================================
+                    BLOG IMAGE
+========================================================== */
+
+.blog-card-image {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 190px;
+
+    overflow: hidden;
+
+}
+
+
+.blog-card-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    transition:
+        transform 0.4s ease;
+
+}
+
+
+.blog-card:hover
+.blog-card-image img {
+
+    transform: scale(1.05);
+
+}
+
+
+/* ==========================================================
+                    BLOG STATUS
+========================================================== */
+
+.blog-status {
+
+    position: absolute;
+
+    top: 14px;
+
+    right: 14px;
+
+    padding: 6px 11px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    background: white;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.12);
+
+}
+
+
+.blog-status.published {
+
+    color: #166534;
+
+    background: #dcfce7;
+
+}
+
+
+.blog-status.draft {
+
+    color: #92400e;
+
+    background: #fef3c7;
+
+}
+
+
+/* ==========================================================
+                    BLOG CONTENT
+========================================================== */
+
+.blog-card-content {
+
+    padding: 22px;
+
+}
+
+
+.blog-card-content h3 {
+
+    margin: 0 0 10px;
+
+    font-size: 19px;
+
+    line-height: 1.4;
+
+    color: var(--secondary, #0f172a);
+
+}
+
+
+.blog-excerpt {
+
+    margin: 0 0 18px;
+
+    color: var(--text, #475569);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    display: -webkit-box;
+
+    -webkit-line-clamp: 3;
+
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+
+}
+
+
+/* ==========================================================
+                    BLOG META
+========================================================== */
+
+.blog-meta {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    padding-top: 15px;
+
+    border-top:
+        1px solid var(--border, #e2e8f0);
+
+    font-size: 12px;
+
+    color: #64748b;
+
+}
+
+
+.blog-meta span {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+}
+
+
+.blog-meta i {
+
+    color: var(--primary, #0f766e);
+
+}
+
+
+/* ==========================================================
+                    BLOG ACTIONS
+========================================================== */
+
+.blog-card-actions {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 20px;
+
+}
+
+
+.blog-card-actions button {
+
+    flex: 1;
+
+}
+
+
+/* ==========================================================
+                    DELETE BUTTON
+========================================================== */
+
+.btn-danger {
+
+    border: none;
+
+    background: #fee2e2;
+
+    color: #b91c1c;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+}
+
+
+.btn-danger:hover {
+
+    background: #fecaca;
+
+}
+
+
+/* ==========================================================
+                    MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+
+    .blogs-container {
+
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+
+    }
+
+
+    .blog-card-image {
+
+        height: 200px;
+
+    }
+
+
+    .blog-card-content {
+
+        padding: 18px;
+
+    }
+
+
+    .blog-card-actions {
+
+        flex-direction: column;
+
+    }
+
+}
+
+
+/* ==========================================================
+                    SMALL PHONES
+========================================================== */
+
+@media (max-width: 480px) {
+
+    .blog-card-image {
+
+        height: 180px;
+
+    }
+
+
+    .blog-card-content h3 {
+
+        font-size: 17px;
+
+    }
+
+
+    .blog-meta {
+
+        flex-direction: column;
+
+        gap: 8px;
+
+    }
+
+}
+
+/* ==========================================================
+                BLOG FORM IMAGE PREVIEW
+========================================================== */
+
+.blog-image-upload {
+
+    width: 100%;
+
+}
+
+
+.blog-current-image {
+
+    width: 100%;
+
+    max-width: 100%;
+
+    height: 220px;
+
+    margin-bottom: 15px;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    background: #f1f5f9;
+
+}
+
+
+.blog-current-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center;
+
+}
+
+
+/* ==========================================================
+                IMAGE PLACEHOLDER
+========================================================== */
+
+.blog-image-placeholder {
+
+    width: 100%;
+
+    height: 180px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #f8fafc;
+
+    border: 2px dashed #cbd5e1;
+
+    border-radius: 14px;
+
+    margin-bottom: 15px;
+
+    color: #64748b;
+
+}
+
+
+.blog-image-placeholder i {
+
+    font-size: 35px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.blog-image-placeholder p {
+
+    margin: 0;
+
+}
+
+
+/* ==========================================================
+                    MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+
+    .blog-current-image {
+
+        height: 200px;
+
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .blog-current-image {
+
+        height: 170px;
+
+    }
+
+}

@@ -30,6 +30,13 @@ import {
     initializeViewingsPage
 } from "./pages/viewings.js";
 
+import {
+    renderBlogsPage,
+    initializeBlogsPage
+} from "./pages/blogs.js";
+
+
+
 /* ==========================================================
                         NAVIGATE
 ========================================================== */
@@ -113,6 +120,26 @@ export async function navigate(
             initializeMessagesPage();
 
             break;
+
+
+/* ==================================================
+                        BLOGS
+================================================== */
+
+case "blogs":
+
+    await initAdmin({
+
+        title: "Blogs",
+
+        content: renderBlogsPage
+
+    });
+
+    await initializeBlogsPage();
+
+    break;
+
             /* ==================================================
                     VIEWINGS
 ================================================== */

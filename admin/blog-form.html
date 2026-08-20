@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Add Blog | Yunisa CMS
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/admin.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+    <main class="blog-form-page">
+
+
+        <!-- ==================================================
+                            HEADER
+        ================================================== -->
+
+        <div class="blog-form-header">
+
+            <div>
+
+                <span class="page-kicker">
+
+                    YUNISA CMS
+
+                </span>
+
+                <h1 id="formTitle">
+
+                    Create Blog
+
+                </h1>
+
+                <p>
+
+                    Create and publish a new article
+                    on your website.
+
+                </p>
+
+            </div>
+
+
+            <a
+                href="admin.html"
+                class="back-button">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Back to Blogs
+
+            </a>
+
+        </div>
+
+
+
+        <!-- ==================================================
+                            FORM
+        ================================================== -->
+
+        <form
+            id="blogForm"
+            class="blog-form">
+
+
+            <!-- ==================================================
+                                BASIC INFORMATION
+            ================================================== -->
+
+            <section class="blog-form-section">
+
+                <div class="form-section-heading">
+
+                    <div class="form-section-icon">
+
+                        <i class="fa-solid fa-pen-to-square"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h2>
+
+                            Blog Information
+
+                        </h2>
+
+                        <p>
+
+                            Add the main information about
+                            your article.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <div class="form-group full-width">
+
+                        <label for="blogTitle">
+
+                            Blog Title
+
+                        </label>
+
+                        <input
+                            type="text"
+                            id="blogTitle"
+                            placeholder="Enter blog title"
+                            required>
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label for="blogCategory">
+
+                            Category
+
+                        </label>
+
+                        <select
+                            id="blogCategory"
+                            required>
+
+                            <option value="">
+
+                                Select category
+
+                            </option>
+
+                            <option value="Real Estate">
+
+                                Real Estate
+
+                            </option>
+
+                            <option value="Property Tips">
+
+                                Property Tips
+
+                            </option>
+
+                            <option value="Buying">
+
+                                Buying Property
+
+                            </option>
+
+                            <option value="Selling">
+
+                                Selling Property
+
+                            </option>
+
+                            <option value="Renting">
+
+                                Renting
+
+                            </option>
+
+                            <option value="Investment">
+
+                                Property Investment
+
+                            </option>
+
+                            <option value="News">
+
+                                Real Estate News
+
+                            </option>
+
+                            <option value="Lifestyle">
+
+                                Property Lifestyle
+
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label for="blogAuthor">
+
+                            Author
+
+                        </label>
+
+                        <input
+                            type="text"
+                            id="blogAuthor"
+                            placeholder="Author name"
+                            value="Yunisa Real Estate"
+                            required>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ==================================================
+                            FEATURED IMAGE
+            ================================================== -->
+
+            <section class="blog-form-section">
+
+                <div class="form-section-heading">
+
+                    <div class="form-section-icon">
+
+                        <i class="fa-solid fa-image"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h2>
+
+                            Featured Image
+
+                        </h2>
+
+                        <p>
+
+                            Add the image that will appear
+                            on the blog card.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="blogImage">
+
+                        Image URL
+
+                    </label>
+
+                    <input
+                        type="url"
+                        id="blogImage"
+                        placeholder="https://example.com/image.jpg">
+
+                </div>
+
+
+                <div
+                    id="imagePreview"
+                    class="blog-image-preview">
+
+                    <div>
+
+                        <i class="fa-regular fa-image"></i>
+
+                        <span>
+
+                            Image preview
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ==================================================
+                                EXCERPT
+            ================================================== -->
+
+            <section class="blog-form-section">
+
+                <div class="form-section-heading">
+
+                    <div class="form-section-icon">
+
+                        <i class="fa-solid fa-align-left"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h2>
+
+                            Blog Summary
+
+                        </h2>
+
+                        <p>
+
+                            A short description displayed
+                            before readers open the article.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="blogExcerpt">
+
+                        Excerpt
+
+                    </label>
+
+                    <textarea
+                        id="blogExcerpt"
+                        rows="4"
+                        maxlength="300"
+                        placeholder="Write a short summary of your article..."
+                        required></textarea>
+
+                    <small>
+
+                        Keep this short and engaging.
+
+                    </small>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ==================================================
+                                CONTENT
+            ================================================== -->
+
+            <section class="blog-form-section">
+
+                <div class="form-section-heading">
+
+                    <div class="form-section-icon">
+
+                        <i class="fa-solid fa-file-lines"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h2>
+
+                            Article Content
+
+                        </h2>
+
+                        <p>
+
+                            Write the full content of your article.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="blogContent">
+
+                        Content
+
+                    </label>
+
+                    <textarea
+                        id="blogContent"
+                        rows="18"
+                        placeholder="Write your article here..."
+                        required></textarea>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ==================================================
+                                STATUS
+            ================================================== -->
+
+            <section class="blog-form-section">
+
+                <div class="form-section-heading">
+
+                    <div class="form-section-icon">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h2>
+
+                            Publishing
+
+                        </h2>
+
+                        <p>
+
+                            Choose whether this article
+                            should be visible publicly.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="status-options">
+
+
+                    <label class="status-option">
+
+                        <input
+                            type="radio"
+                            name="blogStatus"
+                            value="Draft"
+                            checked>
+
+                        <span>
+
+                            <i class="fa-solid fa-file"></i>
+
+                            <strong>
+
+                                Draft
+
+                            </strong>
+
+                            <small>
+
+                                Save without publishing.
+
+                            </small>
+
+                        </span>
+
+                    </label>
+
+
+
+                    <label class="status-option">
+
+                        <input
+                            type="radio"
+                            name="blogStatus"
+                            value="Published">
+
+                        <span>
+
+                            <i class="fa-solid fa-globe"></i>
+
+                            <strong>
+
+                                Published
+
+                            </strong>
+
+                            <small>
+
+                                Make this article public.
+
+                            </small>
+
+                        </span>
+
+                    </label>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ==================================================
+                                ACTIONS
+            ================================================== -->
+
+            <div class="blog-form-actions">
+
+                <a
+                    href="admin.html"
+                    class="cancel-button">
+
+                    Cancel
+
+                </a>
+
+
+                <button
+                    type="submit"
+                    class="save-blog-button"
+                    id="saveBlogButton">
+
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                    Save Blog
+
+                </button>
+
+            </div>
+
+
+            <p
+                id="blogFormStatus"
+                class="blog-form-status">
+            </p>
+
+
+        </form>
+
+
+    </main>
+
+
+
+    <script
+        type="module"
+        src="js/blog-form.js">
+    </script>
+
+
+</body>
+
+</html>

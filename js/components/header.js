@@ -43,7 +43,9 @@ export function renderHeader() {
                 id="menuToggle"
                 aria-label="Open navigation"
             >
+
                 ☰
+
             </button>
 
 
@@ -56,13 +58,21 @@ export function renderHeader() {
                     Home
                 </a>
 
+
                 <a href="properties.html">
                     Properties
                 </a>
 
+
                 <a href="about.html">
                     About
                 </a>
+
+
+                <a href="blog.html">
+                    Blog
+                </a>
+
 
                 <a href="contact.html">
                     Contact
@@ -83,10 +93,15 @@ export function renderHeader() {
 export function initializeHeader() {
 
     const menuButton =
-        document.getElementById("menuToggle");
+        document.getElementById(
+            "menuToggle"
+        );
+
 
     const nav =
-        document.getElementById("mainNav");
+        document.getElementById(
+            "mainNav"
+        );
 
 
     if (!menuButton || !nav) {
@@ -97,12 +112,17 @@ export function initializeHeader() {
 
 
     menuButton.addEventListener(
+
         "click",
+
         () => {
 
-            nav.classList.toggle("open");
+            nav.classList.toggle(
+                "open"
+            );
 
         }
+
     );
 
 }

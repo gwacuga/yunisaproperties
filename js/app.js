@@ -30,7 +30,8 @@ import {
 
     renderHome,
     loadFeaturedProperties,
-    loadCategoryCounts
+    loadCategoryCounts,
+     loadLatestBlogs
 
 }
 from "./pages/home.js";
@@ -128,6 +129,8 @@ async function initializeApp() {
     await loadFeaturedProperties();
 
     await loadCategoryCounts();
+
+    await loadLatestBlogs();
 
 
     console.log(
