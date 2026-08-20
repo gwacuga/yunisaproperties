@@ -234,7 +234,7 @@
 .contact-form-section form{
 
 
-    background:white;
+    background:rgb(255, 254, 254);
 
 
     padding:40px;
@@ -356,5 +356,387 @@
 
     }
 
+
+}
+
+/* ==========================================================
+                CONTACT FORM WRAPPER
+========================================================== */
+
+.contact-form-wrapper {
+
+    background: var(--white);
+
+    padding: 45px;
+
+    border-radius: 24px;
+
+    border: 1px solid var(--border);
+
+    box-shadow: var(--shadow);
+
+}
+
+
+/* ==========================================================
+                FORM HEADING
+========================================================== */
+
+.contact-form-wrapper h2 {
+
+    margin: 0 0 10px;
+
+    font-family: var(--heading-font);
+
+    font-size: clamp(2rem, 4vw, 2.7rem);
+
+    color: var(--secondary);
+
+    line-height: 1.2;
+
+}
+
+
+.contact-form-wrapper > p {
+
+    margin: 0 0 30px;
+
+    color: var(--text);
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+}
+
+
+/* ==========================================================
+                FORM
+========================================================== */
+
+.contact-form {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 22px;
+
+}
+
+
+/* ==========================================================
+                TWO COLUMN ROW
+========================================================== */
+
+.form-row {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+
+}
+
+
+/* ==========================================================
+                FORM GROUP
+========================================================== */
+
+.form-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+
+/* ==========================================================
+                LABEL
+========================================================== */
+
+.form-group label {
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: var(--secondary);
+
+}
+
+
+/* ==========================================================
+                INPUTS & TEXTAREA
+========================================================== */
+
+.form-group input,
+.form-group textarea {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    background: #f8fafc;
+
+    color: var(--secondary);
+
+    font-family: var(--body-font);
+
+    font-size: 15px;
+
+    padding: 14px 16px;
+
+    outline: none;
+
+    transition:
+        border-color .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+
+}
+
+
+/* ==========================================================
+                INPUT HEIGHT
+========================================================== */
+
+.form-group input {
+
+    height: 52px;
+
+}
+
+
+/* ==========================================================
+                TEXTAREA
+========================================================== */
+
+.form-group textarea {
+
+    min-height: 150px;
+
+    resize: vertical;
+
+    line-height: 1.6;
+
+}
+
+
+/* ==========================================================
+                PLACEHOLDER
+========================================================== */
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+
+    color: #94a3b8;
+
+}
+
+
+/* ==========================================================
+                FOCUS EFFECT
+========================================================== */
+
+.form-group input:focus,
+.form-group textarea:focus {
+
+    border-color: var(--primary);
+
+    background: var(--white);
+
+    box-shadow:
+        0 0 0 4px rgba(15, 118, 110, .10);
+
+}
+
+
+/* ==========================================================
+                SEND BUTTON
+========================================================== */
+
+.contact-submit {
+
+    width: 100%;
+
+    min-height: 54px;
+
+    margin-top: 4px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: var(--primary);
+
+    color: var(--white);
+
+    font-family: var(--body-font);
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    transition:
+        background .25s ease,
+        transform .25s ease,
+        box-shadow .25s ease;
+
+}
+
+
+.contact-submit i {
+
+    font-size: 15px;
+
+}
+
+
+.contact-submit:hover {
+
+    background: var(--secondary);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(15, 23, 42, .15);
+
+}
+
+
+.contact-submit:active {
+
+    transform: translateY(0);
+
+}
+
+
+/* ==========================================================
+                FORM STATUS
+========================================================== */
+
+.contact-form-status {
+
+    margin: 0;
+
+    min-height: 20px;
+
+    text-align: center;
+
+    font-size: 14px;
+
+}
+
+
+/* ==========================================================
+                TABLET
+========================================================== */
+
+@media (max-width: 768px) {
+
+    .contact-form-wrapper {
+
+        padding: 30px 24px;
+
+        border-radius: 20px;
+
+    }
+
+
+    .form-row {
+
+        grid-template-columns: 1fr;
+
+        gap: 22px;
+
+    }
+
+
+    .contact-form-wrapper h2 {
+
+        font-size: 2rem;
+
+    }
+
+}
+
+
+/* ==========================================================
+                SMALL PHONES
+========================================================== */
+
+@media (max-width: 480px) {
+
+    .contact-form-wrapper {
+
+        padding: 25px 18px;
+
+        border-radius: 18px;
+
+    }
+
+
+    .contact-form-wrapper h2 {
+
+        font-size: 1.8rem;
+
+    }
+
+
+    .contact-form-wrapper > p {
+
+        font-size: 14px;
+
+        margin-bottom: 24px;
+
+    }
+
+
+    .contact-form {
+
+        gap: 18px;
+
+    }
+
+
+    .form-group input {
+
+        height: 50px;
+
+    }
+
+
+    .form-group input,
+    .form-group textarea {
+
+        font-size: 14px;
+
+    }
+
+
+    .contact-submit {
+
+        min-height: 52px;
+
+    }
 
 }

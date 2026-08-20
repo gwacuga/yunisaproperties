@@ -2,8 +2,8 @@
                     MESSAGES PAGE
 ========================================================== */
 
-import EnquiriesService
-from "../../../js/services/enquiries.service.js";
+import MessagesService
+from "../services/messages.service.js";
 
 
 /* ==========================================================
@@ -21,12 +21,20 @@ export function renderMessagesPage(){
                 <div>
 
                     <h2>
-                        Enquiries
+                        Messages
                     </h2>
 
                     <p>
-                        Property enquiries from customers.
+                        Messages received from the website contact form.
                     </p>
+
+                </div>
+
+                <div
+                    class="messages-count"
+                    id="messagesCount">
+
+                    Loading...
 
                 </div>
 
@@ -34,11 +42,11 @@ export function renderMessagesPage(){
 
 
             <div
-                id="enquiriesContainer"
-                class="enquiries-container">
+                id="messagesContainer"
+                class="messages-container">
 
                 <p>
-                    Loading enquiries...
+                    Loading messages...
                 </p>
 
             </div>
@@ -51,15 +59,21 @@ export function renderMessagesPage(){
 
 
 /* ==========================================================
-                    LOAD ENQUIRIES
+                    INITIALIZE MESSAGES
 ========================================================== */
 
 export async function initializeMessagesPage(){
 
     const container =
         document.getElementById(
-            "enquiriesContainer"
+            "messagesContainer"
         );
+
+    const count =
+        document.getElementById(
+            "messagesCount"
+        );
+
 
     if(!container){
 
@@ -70,22 +84,37 @@ export async function initializeMessagesPage(){
 
     try{
 
-        const enquiries =
-            await EnquiriesService.getAll();
+        const messages =
+            await MessagesService.getAll();
 
 
-        if(!enquiries.length){
+        if(count){
+
+            count.textContent =
+                `${messages.length} Message${messages.length === 1 ? "" : "s"}`;
+
+        }
+
+
+        if(!messages.length){
 
             container.innerHTML = `
 
                 <div class="empty-state">
 
+                    <div class="empty-icon">
+
+                        <i class="fa-regular fa-envelope"></i>
+
+                    </div>
+
                     <h3>
-                        No enquiries yet
+                        No messages yet
                     </h3>
 
                     <p>
-                        Customer enquiries will appear here.
+                        Messages sent through the website contact form
+                        will appear here.
                     </p>
 
                 </div>
@@ -97,7 +126,7 @@ export async function initializeMessagesPage(){
         }
 
 
-        container.innerHTML = enquiries
+        container.innerHTML = messages
 
             .sort(
                 (a,b) =>
@@ -106,7 +135,7 @@ export async function initializeMessagesPage(){
             )
 
             .map(
-                renderEnquiry
+                renderMessage
             )
 
             .join("");
@@ -116,7 +145,7 @@ export async function initializeMessagesPage(){
     catch(error){
 
         console.error(
-            "Failed to load enquiries:",
+            "Failed to load messages:",
             error
         );
 
@@ -124,7 +153,11 @@ export async function initializeMessagesPage(){
 
             <div class="error-state">
 
-                Failed to load enquiries.
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                <p>
+                    Failed to load messages.
+                </p>
 
             </div>
 
@@ -136,116 +169,226 @@ export async function initializeMessagesPage(){
 
 
 /* ==========================================================
-                    ENQUIRY CARD
+                    MESSAGE CARD
 ========================================================== */
 
-function renderEnquiry(enquiry){
+function renderMessage(message){
+
+    const phone =
+        message.phone || "";
+
+    const whatsappNumber =
+        phone
+            .replace(/\s+/g, "")
+            .replace(/^0/, "254");
+
 
     return `
 
         <article
-            class="enquiry-card">
+            class="message-card">
 
-            <div class="enquiry-card-header">
+
+            <!-- HEADER -->
+
+            <div class="message-card-header">
+
+                <div class="message-sender">
+
+                    <div class="message-avatar">
+
+                        <i class="fa-solid fa-user"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h3>
+
+                            ${escapeHTML(
+                                message.name ||
+                                "Unknown Visitor"
+                            )}
+
+                        </h3>
+
+                        <span>
+
+                            ${escapeHTML(
+                                message.email ||
+                                "No email"
+                            )}
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="message-meta">
+
+                    <span
+                        class="message-status ${getStatusClass(message.status)}">
+
+                        ${message.status || "New"}
+
+                    </span>
+
+                    <small>
+
+                        ${formatDate(
+                            message.createdAt
+                        )}
+
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTACT INFORMATION -->
+
+            <div class="message-contact">
 
                 <div>
 
-                    <h3>
-                        ${enquiry.customerName || "Unknown Customer"}
-                    </h3>
+                    <i class="fa-solid fa-phone"></i>
 
-                    <span
-                        class="enquiry-status ${getStatusClass(enquiry.status)}">
+                    <span>
 
-                        ${enquiry.status || "New"}
+                        ${escapeHTML(
+                            message.phone ||
+                            "No phone"
+                        )}
 
                     </span>
 
                 </div>
 
-                <small>
 
-                    ${formatDate(enquiry.createdAt)}
+                <div>
 
-                </small>
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <span>
+
+                        ${escapeHTML(
+                            message.email ||
+                            "No email"
+                        )}
+
+                    </span>
+
+                </div>
 
             </div>
 
 
-            <div class="enquiry-property">
+            <!-- SUBJECT -->
 
-                <strong>
-                    ${enquiry.propertyTitle || "Property enquiry"}
-                </strong>
+            <div class="message-subject">
 
                 <span>
-                    ${enquiry.propertyType || ""}
+                    Subject
+                </span>
+
+                <h4>
+
+                    ${escapeHTML(
+                        message.subject ||
+                        "No subject"
+                    )}
+
+                </h4>
+
+            </div>
+
+
+            <!-- MESSAGE -->
+
+            <div class="message-body">
+
+                <span>
+                    Message
+                </span>
+
+                <p>
+
+                    ${escapeHTML(
+                        message.message ||
+                        "No message"
+                    )}
+
+                </p>
+
+            </div>
+
+
+            <!-- SOURCE -->
+
+            <div class="message-source">
+
+                <i class="fa-solid fa-globe"></i>
+
+                <span>
+
+                    ${escapeHTML(
+                        message.source ||
+                        "Website"
+                    )}
+
                 </span>
 
             </div>
 
 
-            <div class="enquiry-contact">
+            <!-- ACTIONS -->
 
-                <p>
-
-                    <strong>
-                        Phone:
-                    </strong>
-
-                    ${enquiry.customerPhone || "Not provided"}
-
-                </p>
-
-
-                <p>
-
-                    <strong>
-                        Email:
-                    </strong>
-
-                    ${enquiry.customerEmail || "Not provided"}
-
-                </p>
-
-            </div>
-
-
-            <div class="enquiry-message">
-
-                <strong>
-                    Message
-                </strong>
-
-                <p>
-                    ${enquiry.message || "No message"}
-                </p>
-
-            </div>
-
-
-            <div class="enquiry-actions">
-
-                <a
-                    href="tel:${enquiry.customerPhone || ""}"
-                    class="btn-primary">
-
-                    Call
-
-                </a>
+            <div class="message-actions">
 
 
                 ${
-                    enquiry.customerPhone
+                    phone
 
                     ?
 
                     `
 
                     <a
-                        href="https://wa.me/${enquiry.customerPhone.replace(/^0/, "254")}"
+                        href="tel:${phone}"
+                        class="btn-primary">
+
+                        <i class="fa-solid fa-phone"></i>
+
+                        Call
+
+                    </a>
+
+                    `
+
+                    :
+
+                    ""
+
+                }
+
+
+                ${
+                    phone
+
+                    ?
+
+                    `
+
+                    <a
+                        href="https://wa.me/${whatsappNumber}"
                         target="_blank"
+                        rel="noopener"
                         class="btn-whatsapp">
+
+                        <i class="fa-brands fa-whatsapp"></i>
 
                         WhatsApp
 
@@ -259,7 +402,34 @@ function renderEnquiry(enquiry){
 
                 }
 
+
+                ${
+                    message.email
+
+                    ?
+
+                    `
+
+                    <a
+                        href="mailto:${message.email}"
+                        class="btn-secondary">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                        Email
+
+                    </a>
+
+                    `
+
+                    :
+
+                    ""
+
+                }
+
             </div>
+
 
         </article>
 
@@ -300,6 +470,33 @@ function formatDate(timestamp){
     }
 
     return new Date(timestamp)
-        .toLocaleString();
+        .toLocaleString(
+            "en-KE",
+            {
+                dateStyle: "medium",
+                timeStyle: "short"
+            }
+        );
+
+}
+
+
+/* ==========================================================
+                    ESCAPE HTML
+========================================================== */
+
+function escapeHTML(value){
+
+    return String(value)
+
+        .replace(/&/g, "&amp;")
+
+        .replace(/</g, "&lt;")
+
+        .replace(/>/g, "&gt;")
+
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
 
 }
